@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Seminuevos Haro</title>
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/carousel.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#"><img src="images/haro.png" alt="" width="100" height="50" style="margin: -15px 0px 0px 0px;"></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Inicio</a></li>
+                <li><a href="/nosotros">Nosotros</a></li>
+                <li><a href="/contacto">Contacto</a></li>
+                <li><a href="/ubicacion">Ubicacion</a></li>
+                <li><a href="/galeria">Galeria</a></li>
+
+                <li>
+                <form action="/api/search" class="navigationbar">
+                  <input type="text" placeholder="Search.." name="search" style="color: black">
+                  <button type="submit"><i class="fa fa-search" style="color: black"></i></button>
+                </form>
+              </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+
+    <div class="videoclass">
+    <video width="100%" height="80%" autoplay loop controls muted>
+      <source src="video/auto.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img class="first-slide" src="images/camaro.jpg" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Unete a nuestras redes sociales</h1>
+              <p>conoce mas sobre nuestra marca en nuestras redes sociales
+                <a href="https://www.instagram.com/haro_seminuevos/" target="_blank"><img src="images/insta.png" alt="" width="40" height="40"></a>
+                <a href="https://es-la.facebook.com/seminuevosharo/" target="_blank"><img src="images/face.png" alt="" width="40" height="40"></a>
+                <!--<a><img src="images/pinterest.png" alt="" width="40" height="40"></a>
+                <a><img src="images/linkedin.png" alt="" width="40" height="40"></a>
+                <a><img src="images/Twitter.png" alt="" width="40" height="40"></a>-->
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="second-slide" src="images/lobo.jpg" alt="Second slide" width="2000" height="1000">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Solo los mejores seminuevos</h1>
+              <p>Ven y descubre las mejores marcar solo aqui en Seminuevos Haro</p>
+              <p><a target="_blank"><input class="btn btn-primary" type="button" onclick="location.href='https://www.google.com.mx/maps/place/Seminuevos+Haro/@20.6822763,-103.3500269,13z/data=!4m8!1m2!2m1!1sseminuevos+haro!3m4!1s0x0:0x1963cbfa3606058a!8m2!3d20.7128776!4d-103.3829248';" value="Mapa" /></a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="third-slide" src="images/playa.jpg" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Listo para estas vacaciones?</h1>
+              <p>Observa los ultimos modelos en nuestra galeria</p>
+              <p><a class="btn btn-lg btn-primary" href="Galeria.html" role="button">Galeria</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <div class="container marketing">
+<!--
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="images/chev.jpg" alt="Generic placeholder image" width="150" height="150">
+          <li>&nbsp</li>
+          <li>Camaro</li>
+          <li>Sonic</li>
+          <li>Cruze</li>
+          <li>Cheyenne</li>
+          <br>
+        </div>
+        <div class="col-lg-4">
+          <img class="img-circle" src="images/honda.jpg" alt="Generic placeholder image" width="150" height="150">
+          <li>&nbsp</li>
+          <li>Civic</li>
+          <li>City</li>
+          <li>CRV</li>
+          <li>Accord</li>
+          <br>
+        </div>
+        <div class="col-lg-4">
+          <img class="img-circle" src="images/jeep.png" alt="Generic placeholder image" width="150" height="150">
+          <li>&nbsp</li>
+          <li>Grand Cherokee</li>
+          <li>Renegade</li>
+          <li>Wrangler</li>
+          <br>
+        </div>
+      </div>
+    -->
+<br>
+<hr>
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Pasea por la ciudad <span style="color: gold;">con lo mejor en lujo</span></h2>
+
+          <p class="lead">El segmento de automóviles de lujo es, a día de hoy, más grande que nunca; ha crecido para incluir numerosos sedanes, limusinas, SUVs, coupés y convertibles. Hay opciones para los compradores que necesitan mantener un perfil bajo, y modelos con los que siempre se tendrá una entrada triunfal.</p>
+        </div>
+        <div class="col-md-5">
+          <br><br><br>
+          <a href="/galeria"><img class="featurette-image img-responsive center-block" src="images/bmw.PNG" alt="Generic placeholder image"></a>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+          <h2 class="featurette-heading">Pasa un domingo familiar <span style="color: gold;">Con la mayor comodidad</span></h2>
+          <p class="lead">Justo cuando empezabas a pensar que los autos familiares no son divertidos, llega la gran seleccion de autos en seminuevos Haro. Espaciosos, adaptables y llenos de tecnología para disfrutar tus viajes.</p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+          <br><br><br>
+          <a href="/galeria"><img class="featurette-image img-responsive center-block" src="images/hcrv.PNG" alt="Generic placeholder image"></a>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Sal a pasear <span style="color: gold;">Con gran estilo y confort</span></h2>
+          <p class="lead">La habitabilidad y el confort, tanto del conductor como de los ocupantes, debe ser una máxima a tener en cuenta a la hora de elegir un coche; tanto como las prestaciones o los sistemas de seguridad.</p>
+        </div>
+        <div class="col-md-5">
+          <a href="/galeria"><img class="featurette-image img-responsive center-block" src="images/lobop.PNG" alt="Generic placeholder image"></a>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <b><p style="color: black;">&copy; 2018 Edwino, Inc. </b>&middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
+<style>
+@media (max-width: 380px) {
+  .carousel .item{
+    height: 325px;
+  }
+  .carousel-inner > .item > img{
+    height: 325px;
+  }
+}
+ @media (max-width: 320px) {
+   .carousel .item{
+     height: 325px;
+   }
+   .carousel-inner > .item > img{
+     height: 325px;
+   }
+   }
+   @media (max-width: 420px) {
+     .carousel .item{
+       height: 325px;
+     }
+     .carousel-inner > .item > img{
+       height: 325px;
+     }
+   }
+
+</style>

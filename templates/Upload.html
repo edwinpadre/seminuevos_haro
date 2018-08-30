@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+      <title>Seminuevos Haro</title>
+      <link href="css/upload.css" rel="stylesheet">
+    </head>
+  </head>
+  <body>
+    <div class="container">
+    <br>
+    <div class="row">
+      <div class="col-lg-2 mb-1">
+        <a class="ghost" href="" target="_blank"><img src="images/haro.png" alt="" width="100" height="50"></a>
+      </div>
+      <div class="col-lg-5 mb-1">
+        <h2>Agregar nuevo auto</h2>
+      </div>
+    </div>
+
+    <br><br>
+<form action="/api/upload" method="post" enctype="multipart/form-data" >
+    <div class="row">
+      <div class="col-lg-2 mb-1">
+        <h4>Marca:</h4>
+      </div>
+
+      <div class="col-lg-2 mb-1">
+            <select id="Marca" name="Marca" class="form-control name_list" placeholder="Marca" required>
+              <option value="0"></option>
+              <option value="1">Ford</option>
+              <option value="2">Chevrolet</option>
+              <option value="3">Mazda</option>
+              <option value="4">BMW</option>
+              <option value="5">Audi</option>
+              <option value="6">Nissan</option>
+              <option value="7">Volkswagen</option>
+              <option value="8">Toyota</option>
+              <option value="9">Honda</option>
+              <option value="10">Renault</option>
+              <option value="11">Peugeot</option>
+              <option value="12">Mercedez Benz</option>
+              <option value="13">Hyundai</option>
+              <option value="14">Seat</option>
+              <option value="15">Suzuki</option>
+              <option value="16">Kia</option>
+              <option value="17">Mini</option>
+              <option value="19">Infiniti</option>
+              <option value="20">Acura</option>
+              <option value="21">Volvo</option>
+              <option value="22">Porsche</option>
+              <option value="23">Subaru</option>
+              <option value="24">Isuzu</option>
+              <option value="25">Land Rover</option>
+              <option value="26">Smart</option>
+              <option value="27">Jaguar</option>
+            </select>
+
+      </div>
+
+      <div class="col-lg-2 mb-1">
+        <h4>Modelo:</h4>
+      </div>
+
+      <div class="col-lg-2 mb-1" id="demo">
+        <input type="text" name='modelo' class='form-control name_list' placeholder='modelo' required>
+      </div>
+
+      <div class="col-lg-2 mb-1">
+        <h4>Año:</h4>
+      </div>
+
+      <div class="col-lg-2 mb-1">
+
+            <select id="year" name="year" class="form-control name_list" placeholder="Año" required>
+              <option value="1">2019</option>
+              <option value="2">2018</option>
+              <option value="3">2017</option>
+              <option value="4">2016</option>
+              <option value="5">2015</option>
+              <option value="6">2014</option>
+              <option value="7">2013</option>
+              <option value="8">2012</option>
+              <option value="9">2011</option>
+              <option value="10">2010</option>
+              <option value="11">2009</option>
+              <option value="12">2008</option>
+              <option value="13">2007</option>
+              <option value="14">2006</option>
+              <option value="15">2005</option>
+              <option value="16">2004</option>
+              <option value="17">2003</option>
+              <option value="18">2002</option>
+              <option value="19">2001</option>
+              <option value="20">2000</option>
+              <option value="21">1999</option>
+              <option value="22">1998</option>
+              <option value="23">1997</option>
+              <option value="24">1996</option>
+
+            </select>
+
+      </div>
+
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="col-lg-2 mb-1">
+        <h4>Color:</h4>
+      </div>
+
+      <div class="col-lg-2 mb-1">
+
+            <select id="color" name="color" class="form-control name_list" placeholder="Color" required>
+              <option value="0"></option>
+              <option value="1">Rojo</option>
+              <option value="2">Verde</option>
+              <option value="3">Azul</option>
+              <option value="4">Amarillo</option>
+              <option value="5">Negro</option>
+              <option value="6">Blanco</option>
+              <option value="7">Plata</option>
+              <option value="8">Oro</option>
+              <option value="9">Gris</option>
+              <option value="10">Perla</option>
+              <option value="11">Marron</option>
+              <option value="12">Cafe</option>
+              <option value="13">Morado</option>
+              <option value="14">Rosa</option>
+              <option value="15">Salmon</option>
+              <option value="16">Naranja</option>
+              <option value="17">Tinto</option>
+              <option value="18">Violeta</option>
+            </select>
+
+      </div>
+
+      <div class="col-lg-2 mb-1">
+        <h4>Interiores:</h4>
+      </div>
+
+      <div class="col-lg-2 mb-1">
+
+            <select id="interiores" name="interiores" class="form-control name_list" placeholder="Interiores" required>
+              <option value="0"></option>
+              <option value="1">Piel</option>
+              <option value="2">Sintetico</option>
+            </select>
+
+      </div>
+
+      <div class="col-lg-2 mb-1">
+        <h4>Frenos:</h4>
+      </div>
+
+      <div class="col-lg-2 mb-1">
+            <select id="Frenos" name="Frenos" class="form-control name_list" placeholder="Frenos" required>
+              <option value="1">ABS</option>
+              <option value="2">Mecanicos</option>
+              <option value="3">Hidraulicos</option>
+              <option value="4">Neumaticos</option>
+            </select>
+
+      </div>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="col-lg-2 mb-1">
+        <h4>Precio:</h4>
+      </div>
+
+      <div class="col-lg-2 mb-1">
+          <input list="precio" name="precio" class="form-control name_list" placeholder="Precio" required>
+      </div>
+
+      <div class="col-lg-2 mb-1">
+        <h4>Kilometraje:</h4>
+      </div>
+
+      <div class="col-lg-2 mb-1">
+          <input type="number" list="kilometraje" name="kilometraje" class="form-control name_list" placeholder="Kilometraje" required>
+      </div>
+
+      <div class="col-lg-2 mb-1">
+        <h4>Cilindraje:</h4>
+      </div>
+
+      <div class="col-lg-2 mb-1">
+          <input type="number" list="cilindraje" name="cilindraje" class="form-control name_list" placeholder="Cilindraje" required>
+      </div>
+    </div>
+<br>
+
+    <div class="row">
+      <div class="col-lg-2 mb-1">
+        <h4>Motor:</h4>
+      </div>
+
+      <div class="col-lg-2 mb-1">
+          <input type="text" name="motor" class="form-control name_list" placeholder="Motor" step="0.5" required>
+      </div>
+
+      <div class="col-lg-2 mb-1">
+        <h4>Traccion:</h4>
+      </div>
+
+      <div class="col-lg-2 mb-1">
+
+              <select id="traccion" name="traccion" class="form-control name_list" placeholder="Traccion" required>
+                <option value="0"></option>
+                <option value="1">FWD</option>
+                <option value="2">4×4</option>
+                <option value="3">4WD</option>
+                <option value="4">RWD</option>
+                <option value="5">AWD</option>
+              </select>
+
+      </div>
+
+      <div class="col-lg-2 mb-1">
+        <h4>Transmision:</h4>
+      </div>
+
+      <div class="col-lg-2 mb-1">
+
+            <select id="transmision" name="transmision" class="form-control name_list" placeholder="Transmision" required>
+              <option value="0"></option>
+              <option value="1">Automatica</option>
+              <option value="2">Manual</option>
+            </select>
+
+      </div>
+
+    </div><br>
+    <div class="row">
+
+      <div class="col-lg-2 mb-1">
+        <h4>Electrico:</h4>
+      </div>
+
+      <div class="col-lg-2 mb-1">
+
+              <select id="Electrico" name="Electrico" class="form-control name_list" placeholder="Electrico" required>
+                <option value="0"></option>
+                <option value="1">Si</option>
+                <option value="2">No</option>
+              </select>
+
+      </div>
+
+      <div class="col-lg-2 mb-1">
+        <h4>Quema Cocos:</h4>
+      </div>
+
+      <div class="col-lg-2 mb-1">
+              <select id="quemacocos" name="quemacocos" class="form-control name_list" placeholder="Quemacocos" required>
+                <option value="0"></option>
+                  <option value="1">SI</option>
+                  <option value="2">NO</option>
+              </select>
+
+      </div>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="col-lg-2 mb-1">
+        <h4>Descripcion:</h4>
+      </div>
+
+      <div class="col-lg-4 mb-1">
+        <textarea rows="8" cols="200" name="descripcion" class="form-control name_list" placeholder="Descripcion" required></textarea>
+      </div>
+
+      <div class="col-lg-4 mb-1">
+        <input name="upload[]" type="file" multiple="true" />
+      </div>
+      <div class="col-lg-2 mb-1">
+        <input type="submit" name="submit" class="btn btn-danger" value="Submit">
+      </div>
+    </div>
+
+
+    </form>
+    </div>
+    </div>
+  </body>
+</html>
+<script>
+$(document).on('change', 'input', function(){
+    var options = $('datalist')[0].options;
+    for (var i=0;i<options.length;i++){
+       if (options[i].value == $(this).val())
+         {console.log($(this).val());break;}
+    }
+    if (options[i].value == "Mazda") {
+      console.log("Mazda");
+      document.getElementById("demo").value = "";
+      document.getElementById("demo").innerHTML = "<input list='modelo' name='modelo' class='form-control name_list' placeholder='modelo'><datalist id='modelo'><option value='Mazda 6'><option value='Mazda 3'><option value='Mazda 2'><option value='Mazda CX-3'><option value='Mazda CX-5'><option value='Mazda MX-5'></datalist>";
+    }else if (options[i].value == "Chevrolet") {
+      console.log("Chevrolet");
+      document.getElementById("demo").value = "";
+      document.getElementById("demo").innerHTML = "<input list='modelo' name='modelo' class='form-control name_list' placeholder='modelo'><datalist id='modelo'><option value='Beat'><option value='Spark'><option value='Aveo'><option value='Cavalier'><option value='Cruze'><option value='Malibu'><option value='Equinox'><option value='Suburban'><option value='Tornado'><option value='Silverado'><option value='Cheyenne'><option value='Corvette'><option value='Camaro'><option value='Volt'></datalist>";
+    }else if (options[i].value == "Ford") {
+      console.log("Ford");
+      document.getElementById("demo").value = "";
+      document.getElementById("demo").innerHTML = "<input list='modelo' name='modelo' class='form-control name_list' placeholder='modelo'><datalist id='modelo'><option value='Fiesta'><option value='Focus'><option value='Figo'><option value='Fusion'><option value='Mustang'><option value='Explorer'><option value='Escape'><option value='Explorer'><option value='Edge'><option value='Expedition'><option value='Ecosport'><option value='Ranger'><option value='Lobo'><option value='Shelby'><option value='GT'><option value='Ford Raptor'></datalist>";
+    }else if (options[i].value == "BMW") {
+      console.log("BMW");
+      document.getElementById("demo").value = "";
+      document.getElementById("demo").innerHTML = "<input list='modelo' name='modelo' class='form-control name_list' placeholder='modelo'><datalist id='modelo'><option value='Serie 1'><option value='Serie 2'><option value='Serie 3'><option value='Serie 4'><option value='Serie 5'><option value='Serie 6'><option value='Serie 7'><option value='Serie 8'><option value='M140i'><option value='M240i'><option value='X1'><option value='X2'><option value='X3'><option value='X4'><option value='X5'><option value='X6'><option value='M2'><option value='M3'><option value='M4'><option value='M5'><option value='M6'><option value='X5'><option value='X6'> <option value='i3'><option value='i8'></datalist>";
+    }else if (options[i].value == "Audi") {
+      console.log("Audi");
+      document.getElementById("demo").value = "";
+      document.getElementById("demo").innerHTML = "<input list='modelo' name='modelo' class='form-control name_list' placeholder='modelo'><datalist id='modelo'><option value='A1'><option value='A3'><option value='A4'><option value='A5'><option value='A6'><option value='A7'><option value='A8'><option value='Q2'><option value='Q3'><option value='Q5'><option value='Q7'><option value='TT'><option value='R8'><option value='RS'><option value='e-tron'></datalist>";
+    }else if (options[i].value == "Nissan") {
+      console.log("Nissan");
+      document.getElementById("demo").value = "";
+      document.getElementById("demo").innerHTML = "<input list='modelo' name='modelo' class='form-control name_list' placeholder='modelo'><datalist id='modelo'><option value='370Z'><option value='Sentra'><option value='GT-R'><option value='Maxima'><option value='Altima'><option value='Note'><option value='Tiida'><option value='Versa'><option value='March'><option value='Kicks'><option value='Murano'><option value='Armada'><option value='X-Trail'><option value='Juke'><option value='Frontier'><option value='Leaf'></datalist>";
+    }else if (options[i].value == "Volkswagen") {
+      console.log("Volkswagen");
+      document.getElementById("demo").value = "";
+      document.getElementById("demo").innerHTML = "<input list='modelo' name='modelo' class='form-control name_list' placeholder='modelo'><datalist id='modelo'><option value='Gol'><option value='Polo'><option value='Vento'><option value='Passat'><option value='Jetta'><option value='Beetle'><option value='Golf'><option value='Teramont'><option value='Touareg'><option value='Tiguan'></datalist>";
+    }else if (options[i].value == "Toyota") {
+      console.log("Toyota");
+      document.getElementById("demo").value = "";
+      document.getElementById("demo").innerHTML = "<input list='modelo' name='modelo' class='form-control name_list' placeholder='modelo'><datalist id='modelo'><option value='Yaris'><option value='Corolla'><option value='Camry'><option value='Prius'><option value='Avanza'><option value='RAV4'><option value='Sienna'><option value='Sequoia'><option value='Tacoma'><option value='Hilux'><option value='Tundra'><option value='GT86'><option value='Mirai'></datalist>";
+    }else if (options[i].value == "Honda") {
+      console.log("Honda");
+      document.getElementById("demo").value = "";
+      document.getElementById("demo").innerHTML = "<input list='modelo' name='modelo' class='form-control name_list' placeholder='modelo'><datalist id='modelo'><option value='City'><option value='BR-V'><option value='Civic'><option value='CR-V'><option value='Accord'><option value='Type-R'><option value='Pilot'><option value='Odyssey'><option value='Fit'><option value='HR-V'></datalist>";
+    }else if (options[i].value == "Renault") {
+      console.log("Renault");
+      document.getElementById("demo").value = "";
+      document.getElementById("demo").innerHTML = "<input list='modelo' name='modelo' class='form-control name_list' placeholder='modelo'><datalist id='modelo'><option value='Sandero'><option value='Logan'><option value='Stepway'><option value='Duster'><option value='Captur'><option value='Koleos'><option value='Oroch'><option value='Trezor'><option value='Zoe'><option value='Initiale'></datalist>";
+    }else if (options[i].value == "Peugeot") {
+          console.log("Peugeot");
+          document.getElementById("demo").value = "";
+          document.getElementById("demo").innerHTML = "<input list='modelo' name='modelo' class='form-control name_list' placeholder='modelo'><datalist id='modelo'><option value='208'><option value='308 GT'><option value='301'><option value='Traveller'><option value='2008'><option value='3008'><option value='5008'><option value='Partner'></datalist>";
+        }else if (options[i].value == "Mercedez Benz") {
+          console.log("Mercedez");
+          document.getElementById("demo").value = "";
+          document.getElementById("demo").innerHTML = "<input list='modelo' name='modelo' class='form-control name_list' placeholder='modelo'><datalist id='modelo'><option value='Clase A'><option value='Clase B'><option value='Clase C'><option value='Clase C AMG Berlina'><option value='Clase C AMG Cabrio'><option value='Clase C AMG Coupe'><option value='Clase C AMG Estate'><option value='Clase CLS AMG'><option value='Clase CLS Shooting Brake'><option value='Clase S AMG Cabrio'><option value='Clase S AMG'><option value='Clase S Coupe'><option value='Clase S Batalla corta'><option value='Clase GLC AMG'><option value='Clase GLC'><option value='Clase GLC Coupe'><option value='Clase G AMG'><option value='Clase GLC Largo'><option value='Clase X'><option value='Clase SLC'><option value='Clase SLC AMG'><option value='Clase SL'><option value='Clase SL AMG'><option value='AMG GT'><option value='Citan'><option value='Clase V'><option value='Clase G'><option value='Maybach Pullman'><option value='Clase A'><option value='Clase C'><option value='Clase CLA'><option value='Clase CLS'><option value='Clase B'><option value='Clase E'><option value='Clase GLE'><option value='Clase GLE Coupe'><option value='Clase GLS'><option value='Clase GLA'><option value='Clase M'><option value='Clase GLK'><option value='Clase GL'><option value='Clase CL'><option value='Clase SLK'><option value='Marco Polo'><option value='Clase R'><option value='Vaneo'><option value='Viano'></datalist>";
+        }else if (options[i].value == "Hyundai") {
+          console.log("Hyundai");
+          document.getElementById("demo").value = "";
+          document.getElementById("demo").innerHTML = "<input list='modelo' name='modelo' class='form-control name_list' placeholder='modelo'><datalist id='modelo'><option value='Elantra'><option value='Genesis'><option value='Grand Santa Fe'><option value='i10'><option value='i20'><option value='i30'><option value='i40'><option value='Ioniq'><option value='ix20'><option value='Kona'><option value='Nexo'><option value='Santa Fe'><option value='Tucson'><option value='Veloster'></datalist>";
+        }else if (options[i].value == "Seat") {
+          console.log("Seat");
+          document.getElementById("demo").value = "";
+          document.getElementById("demo").innerHTML = "<input list='modelo' name='modelo' class='form-control name_list' placeholder='modelo'><datalist id='modelo'><option value='Alhambra'><option value='Arona'><option value='Ateca'><option value='Ibiza'><option value='Leon'><option value='Mii'><option value='Tarraco'><option value='Toledo'></datalist>";
+        }else if (options[i].value == "Suzuki") {
+          console.log("Suzuki");
+          document.getElementById("demo").value = "";
+          document.getElementById("demo").innerHTML = "<input list='modelo' name='modelo' class='form-control name_list' placeholder='modelo'><datalist id='modelo'><option value='Baleno'><option value='Celerio'><option value='Ignis'><option value='Jimny'><option value='Swift'><option value='SX4 / S-Cross'><option value='Vitara'></datalist>";
+        }else if (options[i].value == "Kia") {
+          console.log("Kia");
+          document.getElementById("demo").value = "";
+          document.getElementById("demo").innerHTML = "<input list='modelo' name='modelo' class='form-control name_list' placeholder='modelo'><datalist id='modelo'><option value='Carens'><option value='Cee d'><option value='Niro'><option value='Optima'><option value='Picanto'><option value='Rio'><option value='Sorento'><option value='Soul'><option value='Sportage'><option value='Stinger'><option value='Stonic'><option value='Telluride'><option value='Venga'></datalist>";
+        }else if (options[i].value == "Mini") {
+          console.log("Mini");
+          document.getElementById("demo").value = "";
+          document.getElementById("demo").innerHTML = "<input list='modelo' name='modelo' class='form-control name_list' placeholder='modelo'><datalist id='modelo'><option value='5 Puertas'><option value='Cabrio'><option value='Clubman'><option value='Countryman'><option value='Hatch'></datalist>";
+        }else if (options[i].value == "Infinity") {
+          console.log("Infinity");
+          document.getElementById("demo").value = "";
+          document.getElementById("demo").innerHTML = "<input list='modelo' name='modelo' class='form-control name_list' placeholder='modelo'><datalist id='modelo'><option value='Q30'><option value='Q50'><option value='Q60'><option value='Q70'><option value='QX30'><option value='QX50'><option value='QX70'></datalist>";
+
+    }else{
+      console.log("Otro modelo");
+      document.getElementById("demo").innerHTML = "<input list='modelo' value=' ' name='modelo' class='form-control name_list' placeholder='modelo' id='demo'>";
+    }
+});
+</script>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("mySelect").value;
+    document.getElementById("demo").innerHTML = "You selected: " + x;
+}
+</script>
+<style>
+/*ipad responsive*/
+@media (min-width: 768px) and (max-width : 1024px) and (orientation : portrait){
+  body{
+    height: 2100px;
+  }
+}
+</style>

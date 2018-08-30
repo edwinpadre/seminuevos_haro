@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--<link rel="icon" href="../../favicon.ico"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.5/howler.min.js"></script>
+    <title>Seminuevos Haro</title>
+
+<link href="" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+<link href="css/nosotros.css" rel="stylesheet">
+<link href="css/carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#"><img src="images/haro.png" alt="" width="100" height="50" style="margin: -15px 0px 0px 0px;"></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="/">Inicio</a></li>
+                <li class="active"><a href="/nosotros">Nosotros</a></li>
+                <li><a href="/contacto">Contacto</a></li>
+                <li><a href="/ubicacion">Ubicacion</a></li>
+                <li><a href="/galeria">Galeria</a></li>
+
+                <li>
+                <form action="/api/search" class="navigationbar">
+                  <input type="text" placeholder="Search.." name="search" style="color: black">
+                  <button type="submit"><i class="fa fa-search" style="color: black"></i></button>
+                </form>
+              </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+    <div class="container">
+      <br><br><br><br><br><br><br><br><br><br>
+      <div class="row">
+        <div class="col-lg-3 mb-1">
+          <h1  style="color: gold;text-shadow: 2px 2px white; " class="nosotros">NOSOTROS</h1>
+        </div>
+      </div>
+      <br><br>
+      <div class="page">
+  <div class="data">
+    <h1>Haro</h1>
+    <h2>#SeminuevosHaro</h2>
+    <a class="ghost" href="contacto.html" target="_blank"><img src="images/haro.png" alt="" width="100" height="50"></a>
+  </div>
+
+  <div id="screen">
+
+  <div class="container">
+    <svg id="engine" viewBox="0 0 140 95">
+      <path d="M11 54v-8H3v18-37 18h8V32l8-6h12l8-7h25V8H43l4-4h38v4L64 8v11h24l8 8v10h9v9l4 4h8V37h10l8 9v30l-8 8h-10V70h-7l-5 5v9l-6 6H56L38 72H17l-6-7V46"/>
+    </svg>
+  </div>
+
+  </div>
+
+</div>
+<br><br><br><br><br><br><br><br><br>
+      <div class="row">
+        <div class="col-lg-11 mb-1">
+          <h3 style="color:#F7F1F0; text-shadow: 3px 3px black;">
+      SEMINUEVOS HARO S.A. DE C.V. Es una empresa
+      enfocada a la compra-venta de vehículos seminuevos,
+      con mas de 14 años de experiencia, ofreciendo unidades
+      para cada una de sus necesidades con el mejor precio y
+      trato a nuestros clientes, generando confianza, seguridad
+      y garantía sin arriesgar su patrimonio. Con esto
+      pretendemos seguir creando mas clientes satisfechos y
+      siempre ser tu mejor opción automotriz. lo cual es lo mas
+      importante para nosotros.
+    </h3>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
+<script>
+let motor = new Howl({
+src: ['https://cdn.rawgit.com/ManzDev/codevember2017/master/assets/motor.mp3'],
+loop: true
+});
+
+let startmotor = new Howl({
+src: ['https://cdn.rawgit.com/ManzDev/codevember2017/master/assets/start-motor.mp3?4']
+});
+
+setTimeout(function() { startmotor.play() }, 5000);
+setTimeout(function() { motor.play() }, 6000);
+</script>
+<style>
+
+/*ipad responsive*/
+@media (min-width: 768px) and (max-width: 1024px){
+  #engine{
+    width: 475px;
+    left: 0px;
+  }
+  h3{
+    margin-top: -55px;
+  }
+  .nosotros{
+    margin-top: 10px;
+  }
+  body{
+        margin-top: -25px !important;
+  }
+}
+/* Responsive for phones */
+@media (max-width: 420px) {
+#engine{
+  width: 340px;
+  left: 0px;
+}
+body{
+  margin-top: -140px;
+}
+h3{
+      margin-top: -90px;
+}
+}
+ @media (max-width: 380px) {
+}
+  @media (max-width: 320px) {
+    #engine{
+      width: 300px;
+      left: 0px;
+    }
+  }
+ @media (max-height: 420px) and (max-width: 820px) {
+
+}
+
+</style>
