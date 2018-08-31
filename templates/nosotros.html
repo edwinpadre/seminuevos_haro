@@ -45,8 +45,10 @@
 
                 <li>
                 <form action="/api/search" class="navigationbar">
-                  <input type="text" placeholder="Search.." name="search" style="color: black">
-                  <button type="submit"><i class="fa fa-search" style="color: black"></i></button>
+                  <input type="text" placeholder="Search.." name="search" style="color: black" id="search-input">
+                    <button type="button" class="btn btn-primary btn-lg " data-toggle="modal" data-target="#searchModal" id="search-btn">
+                        <i class="fa fa-search" style="color: black"></i>
+                    </button>
                 </form>
               </li>
               </ul>
@@ -99,7 +101,27 @@
         </div>
       </div>
     </div>
+    <!-- The modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="modalLabelSmall" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
 
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="modalLabelSmall">Modal Title</h4>
+                </div>
+
+                <div class="modal-body" id="modal-body">
+                    <img src="/images/loaader.gif" style="width: 100%;">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- The modal -->
+    <script src="js/search.js"></script>
   </body>
 </html>
 <script>

@@ -16,4 +16,14 @@ class PostData {
         $query = MainModel::createNew($params);
         return $query;
     }
+
+    function searchQuery($param){
+        $query = MainModel::search($param);
+        echo $query;
+    }
+
+    function searchByTag($params){
+       $query = MainModel::searchByTag($params);
+       echo $query;
+    }
 }

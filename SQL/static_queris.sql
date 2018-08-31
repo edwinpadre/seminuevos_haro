@@ -56,10 +56,66 @@ VALUES(
  
 INSERT INTO `seminuevos_haro`.`Auto` (precio,Modelo,cilindraje,Kilometraje,Motor_desc,description,disponible,Marca_idMarca ) VALUES (10000,'nissan','6','5','test','Desc',1,1);
 
-SELECT auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto.Kilometraje,auto.Motor_desc,auto.disponible,auto.marca_idMarca FROM auto 
-INNER JOIN marca ON idMarca = auto.marca_idMarca;
+SELECT auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto.Kilometraje,auto.Motor_desc,auto.disponible,auto.marca_idMarca,marca.marca,auto.frenos_idFrenos,frenos.frenos,interiores.interiores FROM auto 
+            JOIN marca 
+                ON marca.idMarca = auto.marca_idMarca
+            JOIN frenos 
+                ON frenos.idFrenos = auto.frenos_idFrenos
+            JOIN interiores 
+                ON interiores.idinteriores = auto.interiores_idInteriores; 
 
-SELECT * FROM `seminuevos_haro`.`marca`;
+SELECT * FROM `seminuevos_haro`.`frenos`;
+
+SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto.Kilometraje,auto.Motor_desc,auto.disponible,marca.marca,frenos.frenos,interiores.interiores,
+year.year,color.color,electrico.electrico,transmision.transmision,traccion.traccion,imagenes.imagenes FROM auto 
+            JOIN marca 
+               ON marca.idMarca = auto.marca_idMarca
+            JOIN frenos 
+               ON frenos.idFrenos = auto.frenos_idFrenos
+            JOIN interiores 
+               ON interiores.idinteriores = auto.interiores_idInteriores
+            JOIN year 
+               ON year.idYear = auto.year_idYear
+            JOIN color
+               ON color.idColor = auto.color_idColor 
+            JOIN electrico
+               ON electrico.idElectrico = auto.electrico_idElectrico
+            JOIN transmision
+               ON transmision.idTransmision = auto.transmision_idTransmision 
+            JOIN traccion
+               ON traccion.idTraccion = auto.traccion_idTraccion
+			JOIN imagenes
+               ON imagenes.idImagenes = auto.idAuto
+ WHERE auto.precio LIKE 10000 
+				OR 'ford 2018' LIKE CONCAT('%', marca.marca, '%')				
+                OR  'ford 2018' LIKE CONCAT('%', marca.marca, '%') 
+                OR  'ford 2018' LIKE CONCAT('%', frenos.frenos, '%') 
+                OR  'ford 2018' LIKE CONCAT('%', interiores.interiores, '%') 
+                OR  'ford 2018' LIKE CONCAT('%', year.year, '%') 
+                OR  'ford 2018' LIKE CONCAT('%', color.color, '%') 
+                OR  'ford 2018' LIKE CONCAT('%', electrico.electrico, '%') 
+                OR  'ford 2018' LIKE CONCAT('%', transmision.transmision, '%') 
+                OR  'ford 2018' LIKE CONCAT('%', traccion.traccion, '%') 
+ ; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
