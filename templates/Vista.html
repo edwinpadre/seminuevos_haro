@@ -161,25 +161,70 @@ $(document).ready(function() {
 
       </div>
       <div class="row">
+        <div class="col-lg-6 mb-1"></div>
         <center>
-          <h3>Ford | Lobo Raptor</h3><h3> $500,000</h3>
+          <div class="flex">
+            <h2 id="results13"></h2><h2>&nbsp;</h2> <h2 id="results14"></h2>
+          </div>
         </center>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6 mb-1"></div>
+        <center>
+          <div class="flex">
+           <h3>$</h3><h3 id="results12"></h3>
+          </div>
+       </center>
+      </div>
         <hr>
         <div class="col-lg-2 mb-1"></div>
           <div class="col-lg-4 mb-1">
-            <h4>Año:</h4>
-            <h4>Kilometros:</h4>
-            <h4>Motor:</h4>
-            <h4>Color:</h4>
-            <h4>Interiores:</h4>
-            <h4>Frenos:</h4>
+            <div class="flex">
+              <h4>Año:</h4><h4 id="results1"></h4>
+            </div>
+            <div class="flex">
+              <h4>Kilometros:</h4><h4 id="results2"></h4>
+            </div>
+
+            <div class="flex">
+              <h4>Motor:</h4><h4 id="results3"></h4>
+            </div>
+
+            <div class="flex">
+              <h4>Color:</h4><h4 id="results4"></h4>
+            </div>
+
+            <div class="flex">
+              <h4>Interiores:</h4><h4 id="results5"></h4>
+            </div>
+
+            <div class="flex">
+              <h4>Frenos:</h4><h4 id="results6"></h4>
+            </div>
+
           </div>
           <div class="col-lg-4 mb-1">
-            <h4>Cilindraje:</h4>
-            <h4>Traccion:</h4>
-            <h4>Transmision:</h4>
-            <h4>Quema Cocos:</h4>
-            <h4>Electrico:</h4>
+
+            <div class="flex">
+              <h4>Cilindraje:</h4><h4 id="results7"></h4>
+            </div>
+
+            <div class="flex">
+              <h4>Traccion:</h4><h4 id="results8"></h4>
+            </div>
+
+            <div class="flex">
+              <h4>Transmision:</h4><h4 id="results9"></h4>
+            </div>
+
+            <div class="flex">
+              <h4>Quema Cocos:</h4><h4 id="results10"></h4>
+            </div>
+
+            <div class="flex">
+              <h4>Electrico:</h4><h4 id="results11"></h4>
+            </div>
           </div>
       </div>
 
@@ -211,4 +256,59 @@ document.getElementById("defaultOpen").click();
   h4{
     padding: 4px;
   }
+  .flex{
+    display: flex;
+  }
 </style>
+
+<script>
+
+$.ajax({
+  type: "GET",
+  url: "/api/search",
+  dataType: "json",
+  error: function (xhr, status) {
+            alert(status);
+            console.log("error putito");
+        },
+  success: function(result){
+    console.log(result[0]);
+    console.log(result);
+
+var idCar = 1; //variable para usar para saber que auto usar su data
+
+anioJSON = result[idCar].year;
+kmJSON = result[idCar].Kilometraje;
+motorJSON = result[idCar].Motor_desc;
+colorJSON = result[idCar].color;
+interioresJSON = result[idCar].interiores;
+frenosJSON = result[idCar].Frenos;
+cilindrajeJSON = result[idCar].cilindraje;
+traccionJSON = result[idCar].traccion;
+transmisionJSON = result[idCar].transmision;
+quemaJSON = result[idCar].quemacocos;
+electricoJSON = result[idCar].electrico;
+
+precioJSON= result[idCar].precio;
+
+marcaJSON= result[idCar].Marca;
+modeloJSON= result[idCar].modelo;
+
+document.getElementById("results1").innerHTML = anioJSON;
+document.getElementById("results2").innerHTML = kmJSON;
+document.getElementById("results3").innerHTML = motorJSON;
+document.getElementById("results4").innerHTML = colorJSON;
+document.getElementById("results5").innerHTML = interioresJSON;
+document.getElementById("results6").innerHTML = frenosJSON;
+document.getElementById("results7").innerHTML = cilindrajeJSON;
+document.getElementById("results8").innerHTML = traccionJSON;
+document.getElementById("results9").innerHTML = transmisionJSON;
+document.getElementById("results10").innerHTML = quemaJSON;
+document.getElementById("results11").innerHTML = electricoJSON;
+document.getElementById("results12").innerHTML = precioJSON;
+
+document.getElementById("results13").innerHTML = marcaJSON;
+document.getElementById("results14").innerHTML = modeloJSON;
+  }
+});
+</script>
