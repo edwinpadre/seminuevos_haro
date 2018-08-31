@@ -9,7 +9,7 @@ class MainModel extends Connecta {
 
        $connect = new Connecta();
        $sql = "
-SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto.Kilometraje,auto.Motor_desc,auto.disponible,marca.marca,frenos.frenos,interiores.interiores,quemacocos.quemacocos,year.year,color.color,electrico.electrico,transmision.transmision,traccion.traccion FROM auto 
+SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto.Kilometraje,auto.Motor_desc,auto.disponible,marca.marca,frenos.frenos,interiores.interiores,quemacocos.quemacocos,year.year,color.color,electrico.electrico,transmision.transmision,traccion.traccion,imagenes.imagenes FROM auto 
             JOIN marca 
                ON marca.idMarca = auto.marca_idMarca
             JOIN frenos 
@@ -27,7 +27,9 @@ SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto
             JOIN transmision
                ON transmision.idTransmision = auto.transmision_idTransmision 
             JOIN traccion
-               ON traccion.idTraccion = auto.traccion_idTraccion                 
+               ON traccion.idTraccion = auto.traccion_idTraccion
+            JOIN imagenes
+               ON imagenes.idImagenes = auto.idAuto                    
         ";
        $result = mysqli_query($connect->conexion,$sql);
        while ($row = mysqli_fetch_array($result)) {
@@ -47,6 +49,7 @@ SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto
            $electrico = $row['electrico'];
            $transmision = $row['transmision'];
            $traccion = $row['traccion'];
+           $imagenes [] = array($row['imagenes']);
 
            $data [] = array(
                "id" => $id,
@@ -64,7 +67,8 @@ SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto
                "color" => $color,
                "electrico" => $electrico,
                "transmision" => $transmision,
-               "traccion" => $traccion
+               "traccion" => $traccion,
+               "imagenes" => $imagenes
            );
        }
        mysqli_close($connect->conexion);
@@ -152,5 +156,159 @@ SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto
             mysqli_close($this->conexion);
         }
     }
+
+    function search($val){
+        if ($val !== "") {
+            $param =  $val[search];
+            $sql = "SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto.Kilometraje,auto.Motor_desc,auto.disponible,marca.marca,frenos.frenos,interiores.interiores,year.year,color.color,electrico.electrico,transmision.transmision,traccion.traccion,imagenes.imagenes FROM auto 
+            JOIN marca 
+               ON marca.idMarca = auto.marca_idMarca
+            JOIN frenos 
+               ON frenos.idFrenos = auto.frenos_idFrenos
+            JOIN interiores 
+               ON interiores.idinteriores = auto.interiores_idInteriores
+            JOIN year 
+               ON year.idYear = auto.year_idYear
+            JOIN color
+               ON color.idColor = auto.color_idColor 
+            JOIN electrico
+               ON electrico.idElectrico = auto.electrico_idElectrico
+            JOIN transmision
+               ON transmision.idTransmision = auto.transmision_idTransmision 
+            JOIN traccion
+               ON traccion.idTraccion = auto.traccion_idTraccion
+            JOIN imagenes
+               ON imagenes.idImagenes = auto.idAuto     
+            WHERE auto.Modelo LIKE '$param' 
+                OR  '$param' LIKE CONCAT('%', marca.marca, '%') 
+                OR  '$param' LIKE CONCAT('%', frenos.frenos, '%') 
+                OR  '$param' LIKE CONCAT('%', interiores.interiores, '%') 
+                OR  '$param' LIKE CONCAT('%', year.year, '%') 
+                OR  '$param' LIKE CONCAT('%', color.color, '%') 
+                OR  '$param' LIKE CONCAT('%', transmision.transmision, '%') 
+                OR  '$param' LIKE CONCAT('%', traccion.traccion, '%')  
+                ";
+
+            $connect = new Connecta();
+            $result = mysqli_query($connect->conexion,$sql);
+            while ($row = mysqli_fetch_array($result)) {
+                $id = $row['idAuto'];
+                $precio = $row['precio'];
+                $modelo = $row['Modelo'];
+                $description = $row['description'];
+                $cilindraje = $row['cilindraje'];
+                $Kilometraje = $row['Kilometraje'];
+                $Motor_desc = $row['Motor_desc'];
+                $marca = $row['marca'];
+                $frenos = $row['frenos'];
+                $interiores = $row['interiores'];
+                $quemacocos = $row['quemacocos'];
+                $year = $row['year'];
+                $color = $row['color'];
+                $electrico = $row['electrico'];
+                $transmision = $row['transmision'];
+                $traccion = $row['traccion'];
+                $imagenes [] = array($row['imagenes']);
+
+                $data [] = array(
+                    "id" => $id,
+                    "precio" => $precio,
+                    "modelo" => $modelo,
+                    "description" => $description,
+                    "cilindraje" => $cilindraje,
+                    "Kilometraje" => $Kilometraje,
+                    "Motor_desc" => $Motor_desc,
+                    "Marca" => $marca,
+                    "Frenos" => $frenos,
+                    "interiores" => $interiores,
+                    "quemacocos" => $quemacocos,
+                    "year" => $year,
+                    "color" => $color,
+                    "electrico" => $electrico,
+                    "transmision" => $transmision,
+                    "traccion" => $traccion,
+                    "imagenes" => $imagenes
+                );
+            }
+            mysqli_close($connect->conexion);
+            return json_encode($data);
+        }
+
+    }
+
+    function searchByTag($params){
+
+            $modelo = $params['modelo'];
+            $marca = $params['marca'];
+            $year = $params['year'];
+
+            $sql = "SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto.Kilometraje,auto.Motor_desc,auto.disponible,marca.marca,frenos.frenos,interiores.interiores,year.year,color.color,electrico.electrico,transmision.transmision,traccion.traccion,imagenes.imagenes FROM auto 
+            JOIN marca 
+               ON marca.idMarca = auto.marca_idMarca
+            JOIN frenos 
+               ON frenos.idFrenos = auto.frenos_idFrenos
+            JOIN interiores 
+               ON interiores.idinteriores = auto.interiores_idInteriores
+            JOIN year 
+               ON year.idYear = auto.year_idYear
+            JOIN color
+               ON color.idColor = auto.color_idColor 
+            JOIN electrico
+               ON electrico.idElectrico = auto.electrico_idElectrico
+            JOIN transmision
+               ON transmision.idTransmision = auto.transmision_idTransmision 
+            JOIN traccion
+               ON traccion.idTraccion = auto.traccion_idTraccion
+            JOIN imagenes
+               ON imagenes.idImagenes = auto.idAuto     
+            WHERE auto.Modelo LIKE '$modelo' 
+                OR  '$marca' LIKE CONCAT('%', marca.marca, '%') 
+                OR  '$year' LIKE CONCAT('%', year.year, '%') 
+                ";
+
+            $connect = new Connecta();
+            $result = mysqli_query($connect->conexion,$sql);
+            while ($row = mysqli_fetch_array($result)) {
+                $id = $row['idAuto'];
+                $precio = $row['precio'];
+                $modelo = $row['Modelo'];
+                $description = $row['description'];
+                $cilindraje = $row['cilindraje'];
+                $Kilometraje = $row['Kilometraje'];
+                $Motor_desc = $row['Motor_desc'];
+                $marca = $row['marca'];
+                $frenos = $row['frenos'];
+                $interiores = $row['interiores'];
+                $quemacocos = $row['quemacocos'];
+                $year = $row['year'];
+                $color = $row['color'];
+                $electrico = $row['electrico'];
+                $transmision = $row['transmision'];
+                $traccion = $row['traccion'];
+                $imagenes [] = array($row['imagenes']);
+
+                $data [] = array(
+                    "id" => $id,
+                    "precio" => $precio,
+                    "modelo" => $modelo,
+                    "description" => $description,
+                    "cilindraje" => $cilindraje,
+                    "Kilometraje" => $Kilometraje,
+                    "Motor_desc" => $Motor_desc,
+                    "Marca" => $marca,
+                    "Frenos" => $frenos,
+                    "interiores" => $interiores,
+                    "quemacocos" => $quemacocos,
+                    "year" => $year,
+                    "color" => $color,
+                    "electrico" => $electrico,
+                    "transmision" => $transmision,
+                    "traccion" => $traccion,
+                    "imagenes" => $imagenes
+                );
+            }
+            mysqli_close($connect->conexion);
+            return json_encode($data);
+        }
 
 }

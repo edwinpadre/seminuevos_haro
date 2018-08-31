@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>Seminuevos Haro</title>
@@ -39,12 +38,11 @@
                 <li><a href="/contacto">Contacto</a></li>
                 <li><a href="/ubicacion">Ubicacion</a></li>
                 <li><a href="/galeria">Galeria</a></li>
-
                 <li>
-                <form action="/api/search" class="navigationbar">
-                  <input type="text" placeholder="Search.." name="search" style="color: black">
-                  <button type="submit"><i class="fa fa-search" style="color: black"></i></button>
-                </form>
+                  <input type="text" placeholder="Search.." name="search" style="color: black" id="search-input">
+                    <button type="button" class="btn btn-primary btn-lg " data-toggle="modal" data-target="#searchModal" id="search-btn">
+                        <i class="fa fa-search" style="color: black"></i>
+                    </button>
               </li>
               </ul>
             </div>
@@ -184,6 +182,27 @@
 
       <hr class="featurette-divider">
 
+        <!-- The modal -->
+        <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="modalLabelSmall" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="modalLabelSmall">Modal Title</h4>
+                    </div>
+
+                    <div class="modal-body" id="modal-body">
+                        <img src="/images/loaader.gif" style="width: 100%;">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- The modal -->
+
       <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
         <b><p style="color: black;">&copy; 2018 Edwino, Inc. </b>&middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
@@ -195,6 +214,7 @@
     <script src="../../dist/js/bootstrap.min.js"></script>
     <script src="../../assets/js/vendor/holder.min.js"></script>
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/search.js"></script>
   </body>
 </html>
 <style>

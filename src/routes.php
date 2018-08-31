@@ -63,17 +63,22 @@ $app->post('/api/upload', function (ServerRequestInterface $request, ResponseInt
     }
 });
 
-$app->get('/api/search', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
+$app->get('/api/getAll', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
     $params = $request->getParams();
     $res = new \src\app\Controllers\GetData();
     $res -> getAll($params);
-    /*
-    if($res){
-        return $this->response->withRedirect('/');
-    } else {
-        return $this->response->withRedirect('/upload');
-    }
-    */
+});
+
+$app->get('/api/search', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
+    $params = $request->getParams();
+    $res = new \src\app\Controllers\PostData();
+    $res -> searchQuery($params);
+});
+
+$app->get('/api/search_by_tag', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
+    $params = $request->getParams();
+    $res = new \src\app\Controllers\PostData();
+    $res -> searchByTag($params);
 });
 
 ?>
