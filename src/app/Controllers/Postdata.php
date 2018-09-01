@@ -26,4 +26,9 @@ class PostData {
        $query = MainModel::searchByTag($params);
        echo $query;
     }
+
+    function searchById($params){
+        $query = MainModel::searchById($params);
+        echo $query;
+    }
 }
