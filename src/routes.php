@@ -81,4 +81,10 @@ $app->get('/api/search_by_tag', function (ServerRequestInterface $request, Respo
     $res -> searchByTag($params);
 });
 
+$app->get('/api/search_by_id', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
+    $params = $request->getParams();
+    $res = new \src\app\Controllers\PostData();
+    $res -> searchById($params);
+});
+
 ?>
