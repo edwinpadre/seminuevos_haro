@@ -60,8 +60,10 @@ $(document).ready(function() {
 
                 <li>
                 <form action="/api/search" class="navigationbar">
-                  <input type="text" placeholder="Search.." name="search" style="color: black">
-                  <button type="submit"><i class="fa fa-search" style="color: black"></i></button>
+                  <input type="text" placeholder="Search.." name="search" style="color: black" id="search-input">
+                    <button type="button" class="btn btn-primary btn-lg " data-toggle="modal" data-target="#searchModal" id="search-btn">
+                        <i class="fa fa-search" style="color: black"></i>
+                    </button>
                 </form>
               </li>
               </ul>
@@ -232,7 +234,27 @@ $(document).ready(function() {
     <div class="col-lg-1 mb-2"></div>
     <a href="https://www.instagram.com/haro_seminuevos/" target="_blank"><img src="images/insta.png" alt="" width="40" height="40"></a>
     <a href="https://es-la.facebook.com/seminuevosharo/" target="_blank"><img src="images/face.png" alt="" width="40" height="40"></a>
+    <!-- The modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="modalLabelSmall" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
 
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="modalLabelSmall">Modal Title</h4>
+          </div>
+
+          <div class="modal-body" id="modal-body">
+            <img src="/images/loaader.gif" style="width: 100%;">
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- The modal -->
+    <script src="js/search.js"></script>
   </body>
 </html>
 <script>
@@ -265,17 +287,17 @@ document.getElementById("defaultOpen").click();
 
 $.ajax({
   type: "GET",
-  url: "/api/search",
+  url: "/api/getAll",
   dataType: "json",
   error: function (xhr, status) {
             alert(status);
-            console.log("error putito");
+            console.error("error");
         },
   success: function(result){
     console.log(result[0]);
     console.log(result);
 
-var idCar = 1; //variable para usar para saber que auto usar su data
+var idCar = 1;
 
 anioJSON = result[idCar].year;
 kmJSON = result[idCar].Kilometraje;
