@@ -65,9 +65,16 @@
 
             <figure>
           <center>
-          <h3>Ford Lobo</h3>
-          <h4>$500,000</h4>
-          <h5>2018 | 30,000 km</h5></a>
+          <div class="flex">
+            <h2 id="results13"></h2><h2>&nbsp;</h2> <h2 id="results14"></h2>
+          </div>
+          <div class="flex">
+           <h3>$</h3><h3 id="results12"></h3>
+          </div>
+
+          <div class="flex">
+            <h2 id="results1"></h2><h2>&nbsp;</h2> <h2 id="results2"></h2>
+          </div>
         </center>
         </div>
         ';
@@ -138,4 +145,48 @@ a{
     margin-bottom: 100px;
   }
 }
+  .flex{
+    display: flex;
+  }
 </style>
+
+<script>
+$.ajax({
+  type: "GET",
+  url: "/api/search",
+  dataType: "json",
+  error: function (xhr, status) {
+            alert(status);
+            console.log("error putito");
+        },
+  success: function(result){
+    console.log(result[0]);
+    console.log(result);
+
+var idCar = 1; //variable para usar para saber que auto usar su data
+
+anioJSON = result[idCar].year;
+kmJSON = result[idCar].Kilometraje;
+motorJSON = result[idCar].Motor_desc;
+colorJSON = result[idCar].color;
+interioresJSON = result[idCar].interiores;
+frenosJSON = result[idCar].Frenos;
+cilindrajeJSON = result[idCar].cilindraje;
+traccionJSON = result[idCar].traccion;
+transmisionJSON = result[idCar].transmision;
+quemaJSON = result[idCar].quemacocos;
+electricoJSON = result[idCar].electrico;
+
+precioJSON= result[idCar].precio;
+
+marcaJSON= result[idCar].Marca;
+modeloJSON= result[idCar].modelo;
+
+document.getElementById("results1").innerHTML = anioJSON;
+document.getElementById("results2").innerHTML = kmJSON;
+document.getElementById("results12").innerHTML = precioJSON;
+document.getElementById("results13").innerHTML = marcaJSON;
+document.getElementById("results14").innerHTML = modeloJSON;
+  }
+});
+</script>
