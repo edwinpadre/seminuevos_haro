@@ -179,8 +179,7 @@ $.ajax({
   url: "/api/search",
   dataType: "json",
   error: function (xhr, status) {
-            alert(status);
-            console.log("error putito");
+            console.log(status);
         },
   success: function(result){
     console.log(result[0]);

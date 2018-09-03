@@ -76,7 +76,7 @@ $(document).ready(function() {
     <div class="container">
       <br><br><br><br><br><br><br><br>
       <div class="row">
-        <a href="/galeria" style="color:black">
+        <a href="/galeria" style="color:white">
           <span class="glyphicon glyphicon-arrow-left"></span> Regresar
         </a>
       </div>
@@ -125,7 +125,7 @@ $(document).ready(function() {
           </div>
 
           </div>
-
+<!--
         <div id="Interior" class="tabcontent">
           <div class="col-lg-9 mb-1">
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -160,7 +160,7 @@ $(document).ready(function() {
             <h3>Descripcion Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</h3>
           </div>
         </div>
-
+-->
       </div>
       <div class="row">
         <div class="col-lg-6 mb-1"></div>
@@ -336,8 +336,7 @@ $.ajax({
   url: "/api/getAll",
   dataType: "json",
   error: function (xhr, status) {
-            alert(status);
-            console.error("error");
+            console.error(status);
         },
   success: function(result){
     console.log(result[0]);
