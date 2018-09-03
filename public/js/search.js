@@ -21,9 +21,9 @@ function searchToApi(val){
            } else {
                for (var i in data){
                    if (i === "0"){
-                       modalBody.innerHTML = "<a href='/galeria?year="+data[i].year+"&marca="+data[i].Marca+"&modelo="+data[i].modelo+"'> <div style='padding: 10px 0;'><img width='20%' src='" +data[i].imagenes[0]+ "'/>"+ " " + data[i].year +" "+ data[i].Marca + " "+ data[i].modelo + "</div> </a>";
+                       modalBody.innerHTML = "<a href='/search?year="+data[i].year+"&marca="+data[i].Marca+"&modelo="+data[i].modelo+"'> <div style='padding: 10px 0;'><img width='20%' src='" +data[i].imagenes[0]+ "'/>"+ " " + data[i].year +" "+ data[i].Marca + " "+ data[i].modelo + "</div> </a>";
                    }else {
-                       modalBody.innerHTML += "<a href='/galeria?year="+data[i].year+"&marca="+data[i].Marca+"&modelo="+data[i].modelo+"'> <div style='padding: 10px 0;'><img width='20%' src='" +data[i].imagenes[0]+ "'/>"+ " " + data[i].year +" "+ data[i].Marca + " "+ data[i].modelo + "</div> </a>";
+                       modalBody.innerHTML += "<a href='/search?year="+data[i].year+"&marca="+data[i].Marca+"&modelo="+data[i].modelo+"'> <div style='padding: 10px 0;'><img width='20%' src='" +data[i].imagenes[0]+ "'/>"+ " " + data[i].year +" "+ data[i].Marca + " "+ data[i].modelo + "</div> </a>";
                    }
                }
            }
@@ -32,7 +32,7 @@ function searchToApi(val){
 }
 
 (function(){
-    if (window.location.pathname === "/galeria"){
+    if (window.location.pathname === "/search"){
         $.get('/api/search_by_tag' + window.location.search, function(data){
             data = JSON.parse(data);
             var container = document.getElementById("example");

@@ -146,3 +146,20 @@ a{
     display: flex;
   }
 </style>
+
+<script>
+$.ajax({
+  type: "GET",
+  url: "/api/getAll",
+  dataType: "json",
+  error: function (xhr, status) {
+            console.error(status);
+        },
+  success: function(result){
+    console.log(result[0]);
+    console.log(result);
+
+var idCar = 1;
+}
+});
+</script>

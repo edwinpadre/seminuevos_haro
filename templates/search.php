@@ -14,12 +14,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Seminuevos Haro</title>
     <link href="css/responsive.css" rel="stylesheet">
-    <link href="css/carousel.css" rel="stylesheet">
   </head>
   <body>
     <div class="navbar-wrapper">
       <div class="container">
-
         <nav class="navbar navbar-inverse navbar-static-top">
           <div class="container">
             <div class="navbar-header">
@@ -55,27 +53,10 @@
       </div>
     </div>
     <div class="container">
-      <br><br><br><br><br><br><br><br>
       <div class="row">
-        <?php
-        $Amount = 4;
-        for($i = 0; $i < $Amount; $i++){
-        echo '
-        <div class="col-lg-4 mb-1" id="example">
-            <figure><a href="/vista" style="text-decoration:none;">
-              <img class="featurette-image img-responsive center-block" src="images/lobop.PNG" alt="Generic placeholder image">
+        <div id="example"></div>
 
-            <figure>
-          <center>
-          <h3>Ford Lobo</h3>
-          <h4>$500,000</h4>
-          <h5>2018 | 30,000 km</h5></a>
-        </center>
         </div>
-        ';
-        }
-        ?>
-      </div>
       <br><br>
 
     </div>
@@ -161,21 +142,7 @@ a{
     margin-bottom: 100px;
   }
 }
+  .flex{
+    display: flex;
+  }
 </style>
-
-<script>
-$.ajax({
-  type: "GET",
-  url: "/api/search",
-  dataType: "json",
-  error: function (xhr, status) {
-            console.error(status);
-        },
-  success: function(result){
-    console.log(result[0]);
-    console.log(result);
-
-var idCar = 1;
-}
-});
-</script>
