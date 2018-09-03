@@ -29,7 +29,7 @@ SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto
             JOIN traccion
                ON traccion.idTraccion = auto.traccion_idTraccion
             JOIN imagenes
-               ON imagenes.idImagenes = auto.idAuto                    
+               ON imagenes.auto_idAuto = auto.idAuto                    
         ";
        $result = mysqli_query($connect->conexion,$sql);
        while ($row = mysqli_fetch_array($result)) {
@@ -142,10 +142,12 @@ SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto
                     $newFilePath = "./images/" . $_FILES['upload']['name'][$i];
                     if(move_uploaded_file($tmpFilePath, $newFilePath)) {
                         $sql_images = "INSERT INTO `seminuevos_haro`.`imagenes` (imagenes,auto_idAuto) VALUES ('$newFilePath',$rows[0])";
-                        if ($connect->conexion->query($sql_images) === TRUE ) {
-                            return true;
-                        } else {
-                            echo "Could not upload the images".$sql_images.$this->conexion->error;
+                        if( $i == $total - 1 ){
+                            if ($connect->conexion->query($sql_images) === TRUE ) {
+                                return true;
+                            } else {
+                                echo "Could not upload the images".$sql_images.$this->conexion->error;
+                            }
                         }
                     }
                 }
@@ -178,7 +180,7 @@ SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto
             JOIN traccion
                ON traccion.idTraccion = auto.traccion_idTraccion
             JOIN imagenes
-               ON imagenes.idImagenes = auto.idAuto     
+               ON imagenes.auto_idAuto = auto.idAuto     
             WHERE auto.Modelo LIKE '$param' 
                 OR  '$param' LIKE CONCAT('%', marca.marca, '%') 
                 OR  '$param' LIKE CONCAT('%', frenos.frenos, '%') 
@@ -260,7 +262,7 @@ SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto
             JOIN traccion
                ON traccion.idTraccion = auto.traccion_idTraccion
             JOIN imagenes
-               ON imagenes.idImagenes = auto.idAuto     
+               ON imagenes.auto_idAuto = auto.idAuto     
             WHERE auto.Modelo LIKE '$modelo' 
                 OR  '$marca' LIKE CONCAT('%', marca.marca, '%') 
                 OR  '$year' LIKE CONCAT('%', year.year, '%') 
@@ -333,7 +335,7 @@ SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto
             JOIN traccion
                ON traccion.idTraccion = auto.traccion_idTraccion
             JOIN imagenes
-               ON imagenes.idImagenes = auto.idAuto     
+               ON imagenes.auto_idAuto = auto.idAuto  
             WHERE auto.idAuto = $idSearch
                 ";
 
