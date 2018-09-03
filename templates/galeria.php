@@ -14,12 +14,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Seminuevos Haro</title>
     <link href="css/responsive.css" rel="stylesheet">
-    <link href="css/carousel.css" rel="stylesheet">
   </head>
   <body>
     <div class="navbar-wrapper">
       <div class="container">
-
         <nav class="navbar navbar-inverse navbar-static-top">
           <div class="container">
             <div class="navbar-header">
@@ -55,34 +53,10 @@
       </div>
     </div>
     <div class="container">
-      <br><br><br><br><br><br><br><br>
       <div class="row">
-        <?php
-        $Amount = 4;
-        for($i = 0; $i < $Amount; $i++){
-        echo '
-        <div class="col-lg-4 mb-1" id="example">
-            <figure><a href="/vista" style="text-decoration:none;">
-              <img class="featurette-image img-responsive center-block" src="images/lobop.PNG" alt="Generic placeholder image">
+        <div id="example"></div>
 
-            <figure>
-          <center>
-          <div class="flex">
-            <h2 id="results13"></h2><h2>&nbsp;</h2> <h2 id="results14"></h2>
-          </div>
-          <div class="flex">
-           <h3>$</h3><h3 id="results12"></h3>
-          </div>
-
-          <div class="flex">
-            <h2 id="results1"></h2><h2>&nbsp;</h2> <h2 id="results2"></h2>
-          </div>
-        </center>
         </div>
-        ';
-        }
-        ?>
-      </div>
       <br><br>
 
     </div>
@@ -172,43 +146,3 @@ a{
     display: flex;
   }
 </style>
-
-<script>
-$.ajax({
-  type: "GET",
-  url: "/api/search",
-  dataType: "json",
-  error: function (xhr, status) {
-            console.log(status);
-        },
-  success: function(result){
-    console.log(result[0]);
-    console.log(result);
-
-var idCar = 1; //variable para usar para saber que auto usar su data
-
-anioJSON = result[idCar].year;
-kmJSON = result[idCar].Kilometraje;
-motorJSON = result[idCar].Motor_desc;
-colorJSON = result[idCar].color;
-interioresJSON = result[idCar].interiores;
-frenosJSON = result[idCar].Frenos;
-cilindrajeJSON = result[idCar].cilindraje;
-traccionJSON = result[idCar].traccion;
-transmisionJSON = result[idCar].transmision;
-quemaJSON = result[idCar].quemacocos;
-electricoJSON = result[idCar].electrico;
-
-precioJSON= result[idCar].precio;
-
-marcaJSON= result[idCar].Marca;
-modeloJSON= result[idCar].modelo;
-
-document.getElementById("results1").innerHTML = anioJSON;
-document.getElementById("results2").innerHTML = kmJSON;
-document.getElementById("results12").innerHTML = precioJSON;
-document.getElementById("results13").innerHTML = marcaJSON;
-document.getElementById("results14").innerHTML = modeloJSON;
-  }
-});
-</script>
