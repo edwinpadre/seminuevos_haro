@@ -43,6 +43,11 @@ $app->get('/vista', function (Request $request, Response $response, array $args)
     return $this->renderer->render($response, '/Vista.html', $args);
 });
 
+$app->get('/search-results', function (Request $request, Response $response, array $args) {
+    $this->logger->info("Slim-Skeleton '/nosotros' route");
+    return $this->renderer->render($response, '/search.php', $args);
+});
+
 $app->get('/search', function (Request $request, Response $response, array $args) {
     $this->logger->info("Slim-Skeleton '/nosotros' route");
     return $this->renderer->render($response, '/api/search', $args);

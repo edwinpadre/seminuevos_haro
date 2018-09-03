@@ -183,7 +183,7 @@ $(document).ready(function() {
         <div class="col-lg-2 mb-1"></div>
           <div class="col-lg-4 mb-1">
             <div class="flex">
-              <h4>Año:</h4><h4 id="results1"></h4>
+              <h4 id="desaparecer1">Año:</h4><h4 id="results1"></h4>
             </div>
             <div class="flex">
               <h4>Kilometros:</h4><h4 id="results2"></h4>
@@ -376,6 +376,15 @@ document.getElementById("results12").innerHTML = precioJSON;
 
 document.getElementById("results13").innerHTML = marcaJSON;
 document.getElementById("results14").innerHTML = modeloJSON;
+
+//validate object in null or not
+if (anioJSON.isNull) {
+  console.log("nulo");
+  document.getElementById("desaparecer1").innerHTML = "";
+}else{
+  console.log("info");
+}
+
   }
 });
 </script>
