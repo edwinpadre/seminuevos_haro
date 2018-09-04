@@ -215,7 +215,7 @@ CREATE TABLE `marca` (
 LOCK TABLES `marca` WRITE;
 /*!40000 ALTER TABLE `marca` DISABLE KEYS */;
 INSERT INTO `marca` VALUES (1,'Ford'),(2,'Chevrolet'),(3,'Mazda'),(4,'BMW'),(5,'Audi'),(6,'Nissan'),(7,'Volkswagen'),(8,'Toyota'),(9,'Honda'),(10,'Renault'),(11,'Peugeot'),(12,'Mercedez Benz'),(13,'Hyundai'),(14,'Seat'),(15,'Suzuki'),(16,'Kia'),(17,'Mini'),(18,'Lincoln'),(19,'Infiniti'),(20,'Acura'),(21,'Volvo'),(22,'Porsche'),(23,'Subaru'),(24,'Isuzu'),(25,'Land Rover'),(26,'Smart'),(27,'Jaguar'),(28,'Ferrari'),(29,'Cadillac'),(30,'Jeep'),(31,'Lincoln'),(32,'Tesla'),(33,'Mitsubishi'),(34,'Fiat'),(35,'Genesis'),(36,'Tata'),(37,'Bentley'),(38,'GMC'),(39,'Lotus'),(40,'Pontiac'),(41,'Lexus'),(42,'Dodge'),(43,'Maserati');
-/*!40000 ALTER TABLE `marca` ENABLE KEYS */;
+/*!40000 ALTER TABLE `marca` ENABLE KEYS */; 
 UNLOCK TABLES;
 
 --

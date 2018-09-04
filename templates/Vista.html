@@ -98,6 +98,16 @@ $(document).ready(function() {
                 <li data-target="#myCarousel" data-slide-to="1"></li>
                 <li data-target="#myCarousel" data-slide-to="2"></li>
               </ol>
+            <!--
+              <div class="carousel-inner" roles="listbox">
+                  <?php for($i=0; $i < count($aImagenes); $i++) { ?>
+                  <div class="item <?php if ($i==0) { echo 'active'; }?>">
+                      <img src="<?=$path;?><?=$aImagenes[$i];?>" alt="<?=$aImagenes[$i];?>" style="width:100%;"/>
+                  </div>
+                  <?php } ?>
+                  </div>
+              </div>
+            -->
               <div class="carousel-inner" role="listbox">
                 <div class="item active">
                   <img class="first-slide" src="images/lobo.jpg" alt="First slide">
@@ -341,8 +351,23 @@ $.ajax({
   success: function(result){
     /*console.log(result[0]);
     console.log(result);
-  */
-var idCar = 1;
+    */
+  function GetURLParameter(sParam)
+  {
+      var sPageURL = window.location.search.substring(1);
+      var sURLVariables = sPageURL.split('&');
+      for (var i = 0; i < sURLVariables.length; i++)
+      {
+          var sParameterName = sURLVariables[i].split('=');
+          if (sParameterName[0] == sParam)
+          {
+              return decodeURIComponent(sParameterName[1]);
+          }
+      }
+  }​
+
+  var idCar = GetURLParameter('id');
+//var idCar = 1;
 
 anioJSON = result[idCar].year;
 kmJSON = result[idCar].Kilometraje;
