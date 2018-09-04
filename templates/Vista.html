@@ -339,9 +339,9 @@ $.ajax({
             console.error(status);
         },
   success: function(result){
-    console.log(result[0]);
+    /*console.log(result[0]);
     console.log(result);
-
+  */
 var idCar = 1;
 
 anioJSON = result[idCar].year;
@@ -361,6 +361,10 @@ precioJSON= result[idCar].precio;
 marcaJSON= result[idCar].Marca;
 modeloJSON= result[idCar].modelo;
 
+for(var k in result) {
+  imagenesJSON = result[k].imagenes;
+  console.log(imagenesJSON);
+}
 document.getElementById("results1").innerHTML = anioJSON;
 document.getElementById("results2").innerHTML = kmJSON;
 document.getElementById("results3").innerHTML = motorJSON;
