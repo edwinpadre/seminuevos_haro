@@ -80,7 +80,7 @@
         </div>
     </div>
     <!-- The modal -->
-    <script src="js/search.js"></script>
+    <script src="js/galeria.js"></script>
   </body>
 </html>
 <style>
@@ -151,6 +151,23 @@ a{
 $.ajax({
   type: "GET",
   url: "/api/getAll",
+  dataType: "json",
+  error: function (xhr, status) {
+            console.error(status);
+        },
+  success: function(result){
+    console.log(result[0]);
+    console.log(result);
+
+var idCar = 1;
+}
+});
+</script>
+
+<script>
+$.ajax({
+  type: "GET",
+  url: "/api/search_by_id",
   dataType: "json",
   error: function (xhr, status) {
             console.error(status);

@@ -21,10 +21,24 @@ function searchToApi(val){
            } else {
                for (var i in data){
                    if (i === "0"){
-                       modalBody.innerHTML = "<a href='/search-results?year="+data[i].year+"&marca="+data[i].Marca+"&modelo="+data[i].modelo+"'> <div style='padding: 10px 0;'><img width='20%' src='" +data[i].imagenes[0]+ "'/>"+ " " + data[i].year +" "+ data[i].Marca + " "+ data[i].modelo + "</div> </a>";
+                       modalBody.innerHTML = "<a href='/search-results?marca="+data[i].Marca+"'> <div style='padding: 10px 0;'><img width='20%' src='" +data[i].imagenes[0]+ "'/>"+ " " + data[i].year +" "+ data[i].Marca + " "+ data[i].modelo + "</div> </a>";
                    }else {
-                       modalBody.innerHTML += "<a href='/search-results?year="+data[i].year+"&marca="+data[i].Marca+"&modelo="+data[i].modelo+"'> <div style='padding: 10px 0;'><img width='20%' src='" +data[i].imagenes[0]+ "'/>"+ " " + data[i].year +" "+ data[i].Marca + " "+ data[i].modelo + "</div> </a>";
+                       modalBody.innerHTML += "<a href='/search-results?marca="+data[i].Marca+"'> <div style='padding: 10px 0;'><img width='20%' src='" +data[i].imagenes[0]+ "'/>"+ " " + data[i].year +" "+ data[i].Marca + " "+ data[i].modelo + "</div> </a>";
                    }
+//
+                  if (i === "0"){
+                      modalBody.innerHTML = "<a href='/search-results?modelo="+data[i].modelo+"'> <div style='padding: 10px 0;'><img width='20%' src='" +data[i].imagenes[0]+ "'/>"+ " " + data[i].year +" "+ data[i].Marca + " "+ data[i].modelo + "</div> </a>";
+                  }else {
+                    modalBody.innerHTML += "<a href='/search-results?modelo="+data[i].modelo+"'> <div style='padding: 10px 0;'><img width='20%' src='" +data[i].imagenes[0]+ "'/>"+ " " + data[i].year +" "+ data[i].Marca + " "+ data[i].modelo + "</div> </a>";
+                  }
+/*
+                  if (i === "0"){
+                      modalBody.innerHTML = "<a href='/search-results?year="+data[i].year+"'> <div style='padding: 10px 0;'><img width='20%' src='" +data[i].imagenes[0]+ "'/>"+ " " + data[i].year +" "+ data[i].Marca + " "+ data[i].modelo + "</div> </a>";
+                  }else {
+                    modalBody.innerHTML += "<a href='/search-results?year="+data[i].year+"'> <div style='padding: 10px 0;'><img width='20%' src='" +data[i].imagenes[0]+ "'/>"+ " " + data[i].year +" "+ data[i].Marca + " "+ data[i].modelo + "</div> </a>";
+                  }
+*/
+//
                }
            }
        })
