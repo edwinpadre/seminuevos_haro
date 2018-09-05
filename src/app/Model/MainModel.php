@@ -8,8 +8,7 @@ class MainModel extends Connecta {
    function getAll(){
 
        $connect = new Connecta();
-       $sql = "
-SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto.Kilometraje,auto.Motor_desc,auto.disponible,marca.marca,frenos.frenos,interiores.interiores,quemacocos.quemacocos,year.year,color.color,electrico.electrico,transmision.transmision,traccion.traccion,imagenes.imagenes FROM auto 
+       $sql = "SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto.Kilometraje,auto.Motor_desc,auto.disponible,marca.marca,frenos.frenos,interiores.interiores,quemacocos.quemacocos,year.year,color.color,electrico.electrico,transmision.transmision,traccion.traccion,imagenes.imagenes FROM auto 
             JOIN marca 
                ON marca.idMarca = auto.marca_idMarca
             JOIN frenos 
@@ -49,7 +48,7 @@ SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto
            $electrico = $row['electrico'];
            $transmision = $row['transmision'];
            $traccion = $row['traccion'];
-           $imagenes [] = array($row['imagenes']);
+           $imagenes = explode("array_separator", $row['imagenes']);
 
            $data [] = array(
                "id" => $id,
@@ -75,7 +74,7 @@ SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto
        return $data;
    }
 
-   function createNew($params) {
+    function createNew($params) {
 
         $_Marca = $params['Marca'];
         $_Modelo = $params['modelo'];
@@ -91,6 +90,21 @@ SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto
         $_Transmision = $params['transmision'];
         $_Electrico = $params['Electrico'];
         $_Descripcion = $params['descripcion'];
+
+        if(is_null($_Marca){$_Marca = "null" });
+        if(is_null($_Modelo){$_Modelo = "null" });
+        if(is_null($_Year){$_Year = 0 });
+        if(is_null($_Color){$_Color = "null" });
+        if(is_null($_Interiores){$_Marca = "null" });
+        if(is_null($_Frenos){$_Interiores = "null" });
+        if(is_null($_Precio){$_Precio = 0 });
+        if(is_null($_KM){$_KM = 0 });
+        if(is_null($_Cilindraje){$_Cilindraje = 0 });
+        if(is_null($_Motor){$_Motor = "null" });
+        if(is_null($_Tracccion){$_Tracccion = "null" });
+        if(is_null($_Transmision){$_Transmision = "null" });
+        if(is_null($_Electrico){$_Electrico = "null" });
+        if(is_null($_Descripcion){$_Descripcion = "null" });
 
 
         $sql = "INSERT INTO `seminuevos_haro`.`auto`(
@@ -108,7 +122,8 @@ SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto
                 Kilometraje,
                 Motor_desc,
                 description,
-                Quemacocos_idQuemacocos
+                Quemacocos_idQuemacocos,
+                disponible
                 )
                 VALUES(
                 $_Marca,
@@ -125,6 +140,7 @@ SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto
                 '$_KM',
                 '$_Motor',
                 '$_Descripcion',
+                1,
                 1
         )";
 
@@ -132,6 +148,7 @@ SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto
         if ($connect->conexion->query($sql) === TRUE ) {
 
             $total = count($_FILES['upload']['name']);
+            $img_arr = array();
             $sql_max_id = "SELECT MAX(idAuto) FROM `seminuevos_haro`.`auto`";
             $result=mysqli_query($connect->conexion,$sql_max_id);
             $rows = mysqli_fetch_array($result);
@@ -141,21 +158,22 @@ SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto
                 if ($tmpFilePath != ""){
                     $newFilePath = "./images/" . $_FILES['upload']['name'][$i];
                     if(move_uploaded_file($tmpFilePath, $newFilePath)) {
-                        $sql_images = "INSERT INTO `seminuevos_haro`.`imagenes` (imagenes,auto_idAuto) VALUES ('$newFilePath',$rows[0])";
-                        if( $i == $total - 1 ){
-                            if ($connect->conexion->query($sql_images) === TRUE ) {
-                                return true;
-                            } else {
-                                echo "Could not upload the images".$sql_images.$this->conexion->error;
-                            }
-                        }
+                       array_push($img_arr, $newFilePath);
                     }
                 }
             }
-            mysqli_close($this->conexion);
+            $array_data = implode("array_separator", $img_arr);
+            $sql_images = "INSERT INTO `seminuevos_haro`.`imagenes` (imagenes,auto_idAuto) VALUES ('$array_data',$rows[0])";
+            if ($connect->conexion->query($sql_images) === TRUE ) {
+                return true;
+            } else {
+                echo "Could not upload the images".$sql_images.$connect->conexion->error;
+            }
+            mysqli_close($connect->conexion);
+
         } else {
-            echo "Something went wrong".$sql.$this->conexion->error;
-            mysqli_close($this->conexion);
+            echo "Something went wrong".$sql.$connect->conexion->error;
+            mysqli_close($connect->conexion);
         }
     }
 
@@ -210,7 +228,7 @@ SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto
                 $electrico = $row['electrico'];
                 $transmision = $row['transmision'];
                 $traccion = $row['traccion'];
-                $imagenes [] = array($row['imagenes']);
+                $imagenes = explode("array_separator", $row['imagenes']);
 
                 $data [] = array(
                     "id" => $id,
@@ -287,7 +305,7 @@ SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto
                 $electrico = $row['electrico'];
                 $transmision = $row['transmision'];
                 $traccion = $row['traccion'];
-                $imagenes [] = array($row['imagenes']);
+                $imagenes = explode("array_separator", $row['imagenes']);
 
                 $data [] = array(
                     "id" => $id,
@@ -358,7 +376,7 @@ SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto
             $electrico = $row['electrico'];
             $transmision = $row['transmision'];
             $traccion = $row['traccion'];
-            $imagenes [] = array($row['imagenes']);
+            $imagenes = explode("array_separator", $row['imagenes']);
 
             $data [] = array(
                 "id" => $id,
