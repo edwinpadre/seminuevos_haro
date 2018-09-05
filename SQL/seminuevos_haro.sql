@@ -188,7 +188,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `seminuevos_haro`.`imagenes` (
   `idImagenes` INT NOT NULL AUTO_INCREMENT,
-  `imagenes` VARCHAR(45) NOT NULL,
+  `imagenes` VARCHAR(1000) NOT NULL,
   `auto_idAuto` INT NOT NULL,
   PRIMARY KEY (`idImagenes`),
   INDEX `fk_imagenes_auto1_idx` (`auto_idAuto` ASC) VISIBLE,
