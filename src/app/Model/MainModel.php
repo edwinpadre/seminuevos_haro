@@ -30,6 +30,7 @@ class MainModel extends Connecta {
             JOIN imagenes
                ON imagenes.auto_idAuto = auto.idAuto                    
         ";
+
        $result = mysqli_query($connect->conexion,$sql);
        while ($row = mysqli_fetch_array($result)) {
            $id = $row['idAuto'];
@@ -48,7 +49,7 @@ class MainModel extends Connecta {
            $electrico = $row['electrico'];
            $transmision = $row['transmision'];
            $traccion = $row['traccion'];
-           $imagenes = explode("array_separator", $row['imagenes']);
+           $imagenes = explode(",", $row['imagenes']);
 
            $data [] = array(
                "id" => $id,
@@ -90,21 +91,6 @@ class MainModel extends Connecta {
         $_Transmision = $params['transmision'];
         $_Electrico = $params['Electrico'];
         $_Descripcion = $params['descripcion'];
-
-        if(is_null($_Marca){$_Marca = "null" });
-        if(is_null($_Modelo){$_Modelo = "null" });
-        if(is_null($_Year){$_Year = 0 });
-        if(is_null($_Color){$_Color = "null" });
-        if(is_null($_Interiores){$_Marca = "null" });
-        if(is_null($_Frenos){$_Interiores = "null" });
-        if(is_null($_Precio){$_Precio = 0 });
-        if(is_null($_KM){$_KM = 0 });
-        if(is_null($_Cilindraje){$_Cilindraje = 0 });
-        if(is_null($_Motor){$_Motor = "null" });
-        if(is_null($_Tracccion){$_Tracccion = "null" });
-        if(is_null($_Transmision){$_Transmision = "null" });
-        if(is_null($_Electrico){$_Electrico = "null" });
-        if(is_null($_Descripcion){$_Descripcion = "null" });
 
 
         $sql = "INSERT INTO `seminuevos_haro`.`auto`(
@@ -162,7 +148,7 @@ class MainModel extends Connecta {
                     }
                 }
             }
-            $array_data = implode("array_separator", $img_arr);
+            $array_data = implode(",", $img_arr);
             $sql_images = "INSERT INTO `seminuevos_haro`.`imagenes` (imagenes,auto_idAuto) VALUES ('$array_data',$rows[0])";
             if ($connect->conexion->query($sql_images) === TRUE ) {
                 return true;
@@ -228,7 +214,7 @@ class MainModel extends Connecta {
                 $electrico = $row['electrico'];
                 $transmision = $row['transmision'];
                 $traccion = $row['traccion'];
-                $imagenes = explode("array_separator", $row['imagenes']);
+                $imagenes = explode(",", $row['imagenes']);
 
                 $data [] = array(
                     "id" => $id,
@@ -305,7 +291,7 @@ class MainModel extends Connecta {
                 $electrico = $row['electrico'];
                 $transmision = $row['transmision'];
                 $traccion = $row['traccion'];
-                $imagenes = explode("array_separator", $row['imagenes']);
+                $imagenes = explode(",", $row['imagenes']);
 
                 $data [] = array(
                     "id" => $id,
@@ -376,7 +362,7 @@ class MainModel extends Connecta {
             $electrico = $row['electrico'];
             $transmision = $row['transmision'];
             $traccion = $row['traccion'];
-            $imagenes = explode("array_separator", $row['imagenes']);
+            $imagenes = explode(",", $row['imagenes']);
 
             $data [] = array(
                 "id" => $id,

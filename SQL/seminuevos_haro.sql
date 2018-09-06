@@ -11,7 +11,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema seminuevos_haro
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `seminuevos_haro` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `seminuevos_haro` DEFAULT CHARACTER SET utf8;
 USE `seminuevos_haro` ;
 
 -- -----------------------------------------------------
@@ -19,7 +19,7 @@ USE `seminuevos_haro` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `seminuevos_haro`.`electrico` (
   `idElectrico` INT NOT NULL AUTO_INCREMENT,
-  `electrico` VARCHAR(45) NOT NULL,
+  `electrico` VARCHAR(45) NULL,
   PRIMARY KEY (`idElectrico`))
 ENGINE = InnoDB;
 
@@ -29,7 +29,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `seminuevos_haro`.`year` (
   `idYear` INT NOT NULL AUTO_INCREMENT,
-  `year` INT NOT NULL,
+  `year` INT NULL,
   PRIMARY KEY (`idYear`))
 ENGINE = InnoDB;
 
@@ -39,7 +39,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `seminuevos_haro`.`interiores` (
   `idInteriores` INT NOT NULL AUTO_INCREMENT,
-  `interiores` VARCHAR(45) NOT NULL,
+  `interiores` VARCHAR(45) NULL,
   PRIMARY KEY (`idInteriores`))
 ENGINE = InnoDB;
 
@@ -49,7 +49,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `seminuevos_haro`.`frenos` (
   `idFrenos` INT NOT NULL AUTO_INCREMENT,
-  `frenos` VARCHAR(45) NOT NULL,
+  `frenos` VARCHAR(45) NULL,
   PRIMARY KEY (`idFrenos`))
 ENGINE = InnoDB;
 
@@ -59,7 +59,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `seminuevos_haro`.`marca` (
   `idMarca` INT NOT NULL AUTO_INCREMENT,
-  `marca` VARCHAR(45) NOT NULL,
+  `marca` VARCHAR(45) NULL,
   PRIMARY KEY (`idMarca`))
 ENGINE = InnoDB;
 
@@ -69,7 +69,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `seminuevos_haro`.`quemacocos` (
   `idQuemacocos` INT NOT NULL AUTO_INCREMENT,
-  `quemacocos` VARCHAR(45) NOT NULL,
+  `quemacocos` VARCHAR(45) NULL,
   PRIMARY KEY (`idQuemacocos`))
 ENGINE = InnoDB;
 
@@ -79,7 +79,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `seminuevos_haro`.`color` (
   `idColor` INT NOT NULL AUTO_INCREMENT,
-  `color` VARCHAR(45) NOT NULL,
+  `color` VARCHAR(45) NULL,
   PRIMARY KEY (`idColor`))
 ENGINE = InnoDB;
 
@@ -89,7 +89,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `seminuevos_haro`.`transmision` (
   `idTransmision` INT NOT NULL AUTO_INCREMENT,
-  `transmision` VARCHAR(45) NOT NULL,
+  `transmision` VARCHAR(45) NULL,
   PRIMARY KEY (`idTransmision`))
 ENGINE = InnoDB;
 
@@ -99,7 +99,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `seminuevos_haro`.`traccion` (
   `idTraccion` INT NOT NULL AUTO_INCREMENT,
-  `traccion` VARCHAR(45) NOT NULL,
+  `traccion` VARCHAR(45) NULL,
   PRIMARY KEY (`idTraccion`))
 ENGINE = InnoDB;
 
@@ -126,15 +126,15 @@ CREATE TABLE IF NOT EXISTS `seminuevos_haro`.`auto` (
   `transmision_idTransmision` INT NOT NULL,
   `traccion_idTraccion` INT NOT NULL,
   PRIMARY KEY (`idAuto`),
-  INDEX `fk_auto_marca_idx` (`marca_idMarca` ASC) VISIBLE,
-  INDEX `fk_auto_frenos1_idx` (`frenos_idFrenos` ASC) VISIBLE,
-  INDEX `fk_auto_interiores1_idx` (`interiores_idInteriores` ASC) VISIBLE,
-  INDEX `fk_auto_quemacocos1_idx` (`quemacocos_idQuemacocos` ASC) VISIBLE,
-  INDEX `fk_auto_year1_idx` (`year_idYear` ASC) VISIBLE,
-  INDEX `fk_auto_color1_idx` (`color_idColor` ASC) VISIBLE,
-  INDEX `fk_auto_electrico1_idx` (`electrico_idElectrico` ASC) VISIBLE,
-  INDEX `fk_auto_transmision1_idx` (`transmision_idTransmision` ASC) VISIBLE,
-  INDEX `fk_auto_traccion1_idx` (`traccion_idTraccion` ASC) VISIBLE,
+  INDEX `fk_auto_marca_idx` (`marca_idMarca` ASC) ,
+  INDEX `fk_auto_frenos1_idx` (`frenos_idFrenos` ASC) ,
+  INDEX `fk_auto_interiores1_idx` (`interiores_idInteriores` ASC) ,
+  INDEX `fk_auto_quemacocos1_idx` (`quemacocos_idQuemacocos` ASC) ,
+  INDEX `fk_auto_year1_idx` (`year_idYear` ASC) ,
+  INDEX `fk_auto_color1_idx` (`color_idColor` ASC) ,
+  INDEX `fk_auto_electrico1_idx` (`electrico_idElectrico` ASC) ,
+  INDEX `fk_auto_transmision1_idx` (`transmision_idTransmision` ASC) ,
+  INDEX `fk_auto_traccion1_idx` (`traccion_idTraccion` ASC) ,
   CONSTRAINT `fk_auto_marca`
     FOREIGN KEY (`marca_idMarca`)
     REFERENCES `seminuevos_haro`.`marca` (`idMarca`)
@@ -188,10 +188,10 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `seminuevos_haro`.`imagenes` (
   `idImagenes` INT NOT NULL AUTO_INCREMENT,
-  `imagenes` VARCHAR(1000) NOT NULL,
+  `imagenes` VARCHAR(1000) NULL,
   `auto_idAuto` INT NOT NULL,
   PRIMARY KEY (`idImagenes`),
-  INDEX `fk_imagenes_auto1_idx` (`auto_idAuto` ASC) VISIBLE,
+  INDEX `fk_imagenes_auto1_idx` (`auto_idAuto` ASC) ,
   CONSTRAINT `fk_imagenes_auto1`
     FOREIGN KEY (`auto_idAuto`)
     REFERENCES `seminuevos_haro`.`auto` (`idAuto`)
