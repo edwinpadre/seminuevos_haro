@@ -9,7 +9,6 @@ html {
     background:#000;
     overflow:hidden;
 }
-
 .data {
     position:relative;
     z-index:1;

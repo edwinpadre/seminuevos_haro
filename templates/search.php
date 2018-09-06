@@ -145,4 +145,9 @@ a{
   .flex{
     display: flex;
   }
+  .btn-primary{
+    background-color: currentColor;
+    height: 28px;
+    margin: 0px 0px 3px 0px;
+  }
 </style>
