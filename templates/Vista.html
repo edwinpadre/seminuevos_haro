@@ -263,7 +263,9 @@ $(document).ready(function() {
         </div>
       </div>
     </div>
+    <div id="example"></div>
     <!-- The modal -->
+    <script src="js/vista.js"></script>
     <script src="js/search.js"></script>
   </body>
 </html>
@@ -344,9 +346,10 @@ document.getElementById("defaultOpen").click();
 </style>
 
 <script>
+/*
 $.ajax({
   type: "GET",
-  url: "/api/getAll",
+  url: "/api/search_by_id?id=1",
   dataType: "json",
   error: function (xhr, status) {
             console.error(status);
@@ -354,7 +357,7 @@ $.ajax({
   success: function(result){
     /*console.log(result[0]);
     console.log(result);
-    */
+
     var sParam = window.location.href;
   function GetURLParameter(sParam)
   {
@@ -373,6 +376,7 @@ $.ajax({
   console.log(sParam);
   var idCar = GetURLParameter('id');
   console.log(idCar);
+  console.log(result);
 
 anioJSON = result[idCar].year;
 kmJSON = result[idCar].Kilometraje;
@@ -421,4 +425,5 @@ if (anioJSON.isNull) {
 
   }
 });
+*/
 </script>
