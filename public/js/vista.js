@@ -17,6 +17,11 @@ sBtn.addEventListener('click', function(){
             data = JSON.parse(data);
             var carousel = document.getElementsByClassName('carousel-inner')[0];
             if(data[0] !== undefined){
+              data[0].modelo !== null ?document.getElementById('results14').innerHTML = data[0].modelo : "";
+              data[0].Marca !== null ?document.getElementById('results13').innerHTML = data[0].Marca : "";
+              data[0].precio !== null ?document.getElementById('results12').innerHTML = data[0].precio : "";
+              data[0].description !== null ?document.getElementById('results16').innerHTML = data[0].description : "";
+
                 data[0].year !== null ?document.getElementById('results1').innerHTML = data[0].year : "";
                 data[0].Kilometraje !== null ? document.getElementById('results2').innerHTML = data[0].Kilometraje : "";
                 data[0].Motor_desc != null ? document.getElementById('results3').innerHTML = data[0].Motor_desc : "";
