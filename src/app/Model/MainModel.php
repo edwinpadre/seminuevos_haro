@@ -8,19 +8,15 @@ class MainModel extends Connecta {
    function getAll(){
 
        $connect = new Connecta();
-       $sql = "SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto.Kilometraje,auto.Motor_desc,auto.disponible,marca.marca,frenos.frenos,interiores.interiores,quemacocos.quemacocos,year.year,color.color,electrico.electrico,transmision.transmision,traccion.traccion,imagenes.imagenes FROM auto 
+       $sql = "SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto.Kilometraje,auto.Motor_desc,auto.disponible,marca.marca,frenos.frenos,auto.interiores,quemacocos.quemacocos,year.year,auto.color,electrico.electrico,transmision.transmision,traccion.traccion,imagenes.imagenes FROM auto 
             JOIN marca 
                ON marca.idMarca = auto.marca_idMarca
             JOIN frenos 
                ON frenos.idFrenos = auto.frenos_idFrenos
-            JOIN interiores 
-               ON interiores.idinteriores = auto.interiores_idInteriores
             JOIN quemacocos
                ON quemacocos.idQuemacocos = auto.quemacocos_idQuemacocos
             JOIN year 
                ON year.idYear = auto.year_idYear
-            JOIN color
-               ON color.idColor = auto.color_idColor 
             JOIN electrico
                ON electrico.idElectrico = auto.electrico_idElectrico
             JOIN transmision
@@ -49,7 +45,7 @@ class MainModel extends Connecta {
            $electrico = $row['electrico'];
            $transmision = $row['transmision'];
            $traccion = $row['traccion'];
-           $imagenes = explode(",", $row['imagenes']);
+           $imagenes = json_decode($row['imagenes']);
 
            $data [] = array(
                "id" => $id,
@@ -96,9 +92,9 @@ class MainModel extends Connecta {
         $sql = "INSERT INTO `seminuevos_haro`.`auto`(
                 marca_idMarca,
                 frenos_idFrenos,
-                interiores_idInteriores,
+                interiores,
                 year_idYear,
-                color_idColor,
+                color,
                 electrico_idElectrico,
                 transmision_idTransmision,
                 traccion_idTraccion,
@@ -114,9 +110,9 @@ class MainModel extends Connecta {
                 VALUES(
                 $_Marca,
                 $_Frenos,
-                $_Interiores,
+                '$_Interiores',
                 $_Year,
-                $_Color,
+                '$_Color',
                 $_Electrico,
                 $_Transmision,
                 $_Tracccion,
@@ -134,7 +130,10 @@ class MainModel extends Connecta {
         if ($connect->conexion->query($sql) === TRUE ) {
 
             $total = count($_FILES['upload']['name']);
+            $total_int = count($_FILES['uploadInterior']['name']);
             $img_arr = array();
+            $img_arr_int = array();
+
             $sql_max_id = "SELECT MAX(idAuto) FROM `seminuevos_haro`.`auto`";
             $result=mysqli_query($connect->conexion,$sql_max_id);
             $rows = mysqli_fetch_array($result);
@@ -144,12 +143,29 @@ class MainModel extends Connecta {
                 if ($tmpFilePath != ""){
                     $newFilePath = "./images/" . $_FILES['upload']['name'][$i];
                     if(move_uploaded_file($tmpFilePath, $newFilePath)) {
-                       array_push($img_arr, $newFilePath);
+                       array_push($img_arr,  $newFilePath);
                     }
                 }
             }
-            $array_data = implode(",", $img_arr);
+
+            for( $i=0 ; $i < $total_int ; $i++ ) {
+                $tmpFilePath = $_FILES['uploadInterior']['tmp_name'][$i];
+                if ($tmpFilePath != ""){
+                    $newFilePath = "./images/" . $_FILES['uploadInterior']['name'][$i];
+                    if(move_uploaded_file($tmpFilePath, $newFilePath)) {
+                        array_push($img_arr_int, $newFilePath);
+                    }
+                }
+            }
+
+            $array1    = array("exterior" => $img_arr);
+            $array2    = array("interior" => $img_arr_int);
+            $resultado = array_merge($array1, $array2);
+
+            $array_data = json_encode($resultado);
+            print_r($array_data);
             $sql_images = "INSERT INTO `seminuevos_haro`.`imagenes` (imagenes,auto_idAuto) VALUES ('$array_data',$rows[0])";
+
             if ($connect->conexion->query($sql_images) === TRUE ) {
                 return true;
             } else {
@@ -166,17 +182,13 @@ class MainModel extends Connecta {
     function search($val){
         if ($val !== "") {
             $param =  $val[search];
-            $sql = "SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto.Kilometraje,auto.Motor_desc,auto.disponible,marca.marca,frenos.frenos,interiores.interiores,year.year,color.color,electrico.electrico,transmision.transmision,traccion.traccion,imagenes.imagenes FROM auto 
+            $sql = "SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto.Kilometraje,auto.Motor_desc,auto.disponible,marca.marca,frenos.frenos,auto.interiores,year.year,auto.color,electrico.electrico,transmision.transmision,traccion.traccion,imagenes.imagenes FROM auto 
             JOIN marca 
                ON marca.idMarca = auto.marca_idMarca
             JOIN frenos 
                ON frenos.idFrenos = auto.frenos_idFrenos
-            JOIN interiores 
-               ON interiores.idinteriores = auto.interiores_idInteriores
             JOIN year 
-               ON year.idYear = auto.year_idYear
-            JOIN color
-               ON color.idColor = auto.color_idColor 
+               ON year.idYear = auto.year_idYear 
             JOIN electrico
                ON electrico.idElectrico = auto.electrico_idElectrico
             JOIN transmision
@@ -188,9 +200,9 @@ class MainModel extends Connecta {
             WHERE auto.Modelo LIKE '$param' 
                 OR  '$param' LIKE CONCAT('%', marca.marca, '%') 
                 OR  '$param' LIKE CONCAT('%', frenos.frenos, '%') 
-                OR  '$param' LIKE CONCAT('%', interiores.interiores, '%') 
+                OR  '$param' LIKE CONCAT('%', auto.interiores, '%') 
                 OR  '$param' LIKE CONCAT('%', year.year, '%') 
-                OR  '$param' LIKE CONCAT('%', color.color, '%') 
+                OR  '$param' LIKE CONCAT('%', auto.color, '%') 
                 OR  '$param' LIKE CONCAT('%', transmision.transmision, '%') 
                 OR  '$param' LIKE CONCAT('%', traccion.traccion, '%')  
                 ";
@@ -214,7 +226,7 @@ class MainModel extends Connecta {
                 $electrico = $row['electrico'];
                 $transmision = $row['transmision'];
                 $traccion = $row['traccion'];
-                $imagenes = explode(",", $row['imagenes']);
+                $imagenes = json_decode($row['imagenes']);
 
                 $data [] = array(
                     "id" => $id,
@@ -248,17 +260,13 @@ class MainModel extends Connecta {
             $marca = $params['marca'];
             $year = $params['year'];
 
-            $sql = "SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto.Kilometraje,auto.Motor_desc,auto.disponible,marca.marca,frenos.frenos,interiores.interiores,year.year,color.color,electrico.electrico,transmision.transmision,traccion.traccion,imagenes.imagenes FROM auto 
+            $sql = "SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto.Kilometraje,auto.Motor_desc,auto.disponible,marca.marca,frenos.frenos,auto.interiores,year.year,auto.color,electrico.electrico,transmision.transmision,traccion.traccion,imagenes.imagenes FROM auto 
             JOIN marca 
                ON marca.idMarca = auto.marca_idMarca
             JOIN frenos 
                ON frenos.idFrenos = auto.frenos_idFrenos
-            JOIN interiores 
-               ON interiores.idinteriores = auto.interiores_idInteriores
             JOIN year 
                ON year.idYear = auto.year_idYear
-            JOIN color
-               ON color.idColor = auto.color_idColor 
             JOIN electrico
                ON electrico.idElectrico = auto.electrico_idElectrico
             JOIN transmision
@@ -291,7 +299,7 @@ class MainModel extends Connecta {
                 $electrico = $row['electrico'];
                 $transmision = $row['transmision'];
                 $traccion = $row['traccion'];
-                $imagenes = explode(",", $row['imagenes']);
+                $imagenes = json_decode($row['imagenes']);
 
                 $data [] = array(
                     "id" => $id,
@@ -321,17 +329,13 @@ class MainModel extends Connecta {
 
         $idSearch = $params['id'];
 
-        $sql = "SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto.Kilometraje,auto.Motor_desc,auto.disponible,marca.marca,frenos.frenos,interiores.interiores,year.year,color.color,electrico.electrico,transmision.transmision,traccion.traccion,imagenes.imagenes FROM auto 
+        $sql = "SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto.Kilometraje,auto.Motor_desc,auto.disponible,marca.marca,frenos.frenos,auto.interiores,year.year,auto.color,electrico.electrico,transmision.transmision,traccion.traccion,imagenes.imagenes FROM auto 
             JOIN marca 
                ON marca.idMarca = auto.marca_idMarca
             JOIN frenos 
                ON frenos.idFrenos = auto.frenos_idFrenos
-            JOIN interiores 
-               ON interiores.idinteriores = auto.interiores_idInteriores
             JOIN year 
                ON year.idYear = auto.year_idYear
-            JOIN color
-               ON color.idColor = auto.color_idColor 
             JOIN electrico
                ON electrico.idElectrico = auto.electrico_idElectrico
             JOIN transmision
@@ -362,7 +366,7 @@ class MainModel extends Connecta {
             $electrico = $row['electrico'];
             $transmision = $row['transmision'];
             $traccion = $row['traccion'];
-            $imagenes = explode(",", $row['imagenes']);
+            $imagenes = json_decode($row['imagenes']);
 
             $data [] = array(
                 "id" => $id,

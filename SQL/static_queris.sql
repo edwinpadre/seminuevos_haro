@@ -4,15 +4,15 @@ INSERT INTO `seminuevos_haro`.`color` (Color) VALUES ("Rojo"),("Verde"),("Azul")
 
 INSERT INTO `seminuevos_haro`.`frenos` (Frenos) VALUES ("Mecanicos"),("Hidraulicos"),("Neumaticos");
 INSERT INTO `seminuevos_haro`.`traccion` (Traccion) VALUES ("FWD"),("4×4"),("4WD"),("RWD"),("AWD");
-INSERT INTO `seminuevos_haro`.`transmision` (Transmision) VALUES ("Automatica"),("Manual");
+INSERT INTO `seminuevos_haro`.`transmision` (Transmision) VALUES ("N/A"),("Automatica"),("Manual");
 INSERT INTO `seminuevos_haro`.`quemacocos` (Quemacocos) VALUES ("Si"),("No");
-INSERT INTO `seminuevos_haro`.`electrico` (Electrico) VALUES ("Si"),("No");
+INSERT INTO `seminuevos_haro`.`electrico` (Electrico) VALUES ("N/A"),("Si"),("No");
 
-INSERT INTO `seminuevos_haro`.`interiores` (Interiores) VALUES ("Piel"),("Sintetico");
-INSERT INTO `seminuevos_haro`.`quemacocos` (Quemacocos) VALUES ("si"),("no");
+INSERT INTO `seminuevos_haro`.`interiores` (Interiores) VALUES ("N/A"),("Piel"),("Sintetico");
+INSERT INTO `seminuevos_haro`.`quemacocos` (Quemacocos) VALUES ("N/A"),("si"),("no");
 
 
-SELECT * FROM `seminuevos_haro`.`marca`;
+SELECT * FROM `seminuevos_haro`.`imagenes`;
 
 SELECT COUNT(*) FROM `seminuevos_haro`.`Auto`;
 
@@ -124,14 +124,6 @@ SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto
                 OR  '2018' LIKE CONCAT('%', year.year, '%') ;
 
 
-
-
-
-
-SELECT * FROM imagenes;
-select * from auto;
-
-
 SELECT auto.idAuto,auto.precio,auto.Modelo,auto.description,auto.cilindraje,auto.Kilometraje,auto.Motor_desc,auto.disponible,marca.marca,frenos.frenos,interiores.interiores,quemacocos.quemacocos,year.year,color.color,electrico.electrico,transmision.transmision,traccion.traccion,imagenes.imagenes 
 FROM auto
             JOIN marca 
@@ -152,11 +144,12 @@ FROM auto
                ON transmision.idTransmision = auto.transmision_idTransmision 
             JOIN traccion
                ON traccion.idTraccion = auto.traccion_idTraccion
-            JOIN imagenes
-               ON imagenes.auto_idAuto = auto.idAuto
+			JOIN imagenes
+               ON imagenes.auto_idAuto = auto.idAuto; 
+                           
             
-
-
+SELECT * FROM `seminuevos_haro`.`auto`;
+SELECT * FROM `seminuevos_haro`.`imagenes`;
 
 
 
